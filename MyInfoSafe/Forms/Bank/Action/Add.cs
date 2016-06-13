@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using MyInfoSafe.DataBase;
+using DALayer.API.Dto;
+using MyInfoSafe.Shared;
 using Form = System.Windows.Forms.Form;
 
 namespace MyInfoSafe.Forms.Bank.Action
@@ -16,36 +17,17 @@ namespace MyInfoSafe.Forms.Bank.Action
         {
             try
             {
-                var lBankLabel = bankTxt.Text;
-                var lSumm = Convert.ToDecimal(monetTxt.Text);
-                var lStartDate = startDate.Value;
-                var lEndDate = endDate.Value;
-                var lMonth = Convert.ToInt32(monthTxt.Text);
-                var lPersent = persentTxt.Text.Contains(".") ? Convert.ToDouble(persentTxt.Text.Replace(".",",")): Convert.ToDouble(persentTxt.Text);
-                var lComment = comments.Text;
-                var lType = 0;
-                if (isOld.Checked)
-                    lType = 1;
-                if (lBankLabel == "" || lSumm == 0 || lMonth == 0)
-                {
-                    MessageBox.Show("Set all required fields");
-                }
-                else
-                {
-                    var lBankItem = new Model.Bank();
-                    lBankItem.BankName = lBankLabel;
-                    lBankItem.Summ = lSumm;
-                    lBankItem.StartDate = lStartDate;
-                    lBankItem.EndDate = lEndDate;
-                    lBankItem.Month = lMonth;
-                    lBankItem.Persent = lPersent;
-                    lBankItem.Comment = lComment;
-                    lBankItem.Status = lType;
-                    DBAction.InsertBankItem(lBankItem);
-                    Hide();
-                    BankForm lBankForm = new BankForm();
-                    lBankForm.Show();
-                }
+                var bankLabel = bankTxt.Text;
+                var summ = Convert.ToDecimal(monetTxt.Text);
+                var comment = comments.Text;
+                var bankItem = new BankDto();
+                bankItem.BankName = bankLabel;
+                bankItem.Summ = summ;
+                bankItem.Comment = comment;
+                (new DALayer.API.Model.Bank()).InsertItem(bankItem,Config.Constants.DBPassword);
+                Hide();
+                var lBankForm = new BankForm();
+                lBankForm.Show();
 
             }
             catch (Exception ex)
@@ -57,8 +39,8 @@ namespace MyInfoSafe.Forms.Bank.Action
         private void Add_FormClosing(object sender, FormClosingEventArgs e)
         {
             Hide();
-            BankForm lBankForm = new BankForm();
-            lBankForm.Show();
+            var bankForm = new BankForm();
+            bankForm.Show();
         }
     }
 }

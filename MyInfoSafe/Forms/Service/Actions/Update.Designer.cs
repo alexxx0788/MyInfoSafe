@@ -1,4 +1,4 @@
-﻿namespace MyInfoSafe.Forms.Service.Action
+﻿namespace MyInfoSafe.Forms.Service.Actions
 {
     partial class Update
     {
@@ -43,10 +43,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Font = new System.Drawing.Font("Tahoma", 10F);
             this.label4.Location = new System.Drawing.Point(14, 212);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 22);
+            this.label4.Size = new System.Drawing.Size(97, 17);
             this.label4.TabIndex = 25;
             this.label4.Text = "Advanced Info";
             // 
@@ -60,7 +60,7 @@
             // 
             // edit
             // 
-            this.edit.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.edit.Font = new System.Drawing.Font("Tahoma", 10F);
             this.edit.Location = new System.Drawing.Point(18, 400);
             this.edit.Name = "edit";
             this.edit.Size = new System.Drawing.Size(219, 23);
@@ -72,10 +72,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Font = new System.Drawing.Font("Tahoma", 10F);
             this.label2.Location = new System.Drawing.Point(14, 153);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 22);
+            this.label2.Size = new System.Drawing.Size(66, 17);
             this.label2.TabIndex = 24;
             this.label2.Text = "Password";
             // 
@@ -89,10 +89,10 @@
             // Login
             // 
             this.Login.AutoSize = true;
-            this.Login.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Login.Font = new System.Drawing.Font("Tahoma", 10F);
             this.Login.Location = new System.Drawing.Point(14, 105);
             this.Login.Name = "Login";
-            this.Login.Size = new System.Drawing.Size(51, 22);
+            this.Login.Size = new System.Drawing.Size(41, 17);
             this.Login.TabIndex = 23;
             this.Login.Text = "Login";
             // 
@@ -106,13 +106,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.label1.Location = new System.Drawing.Point(14, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 22);
+            this.label1.Size = new System.Drawing.Size(52, 17);
             this.label1.TabIndex = 22;
             this.label1.Text = "Service";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // service_txt
             // 
@@ -124,10 +123,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(12, 9);
+            this.label3.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.label3.Location = new System.Drawing.Point(53, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(173, 33);
+            this.label3.Size = new System.Drawing.Size(143, 23);
             this.label3.TabIndex = 0;
             this.label3.Text = "Update Account";
             // 
@@ -135,6 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(249, 446);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.advanced_txt);

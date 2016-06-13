@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using MyInfoSafe.Forms.InfoForm;
-using MyInfoSafe.Model;
-using MyInfoSafe.Yandex;
 using MyInfoSafe.forms;
+using MyInfoSafe.Shared;
+using MyInfoSafe.Yandex;
 
 namespace MyInfoSafe
 {
@@ -25,7 +23,7 @@ namespace MyInfoSafe
                 disk.GET(Config.Constants.DBFile, Config.Constants.DBFile);
                 Application.Run(new Main());
             }
-            catch (Exception ex)
+            catch 
             {
                 Application.Run(new GetTokenForm());
             }

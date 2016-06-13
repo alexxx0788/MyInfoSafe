@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
-using MyInfoSafe.Forms.Service.Action;
-using MyInfoSafe.Model;
+using DALayer.API.Model;
 using MyInfoSafe.forms;
-using MyInfoSafe.DataBase;
 using MyInfoSafe.Forms.Bank;
+using MyInfoSafe.Forms.Service.Actions;
+using MyInfoSafe.Shared;
 using Form = System.Windows.Forms.Form;
 
 namespace MyInfoSafe.Forms.Service
@@ -31,14 +30,14 @@ namespace MyInfoSafe.Forms.Service
         
         private void refresh_Click(object sender, EventArgs e)
         {
-            var lSearch = search_txt.Text;
-            RefreshGrid(lSearch);
+            var search = searchTxt.Text;
+            RefreshGrid(search);
         }
 
-        private void RefreshGrid (string pSearch)
+        private void RefreshGrid (string search)
         {
-            var lInfoList = new List<Info>();
-            lInfoList = DBAction.Service_GetInfoFromBase(pSearch);
+            var info = new Info();
+            var lInfoList = info.GetItemsList(search, Config.Constants.DBPassword);
             grid.DataSource = lInfoList;
             grid.Columns[0].Visible = false;
             grid.Columns[3].MinimumWidth = 142;
@@ -47,20 +46,20 @@ namespace MyInfoSafe.Forms.Service
 
         private void search_txt_MouseClick(object sender, MouseEventArgs e)
         {
-            search_txt.Text = string.Empty;
+            searchTxt.Text = string.Empty;
         }
 
-        private void grid_RowEnter(object sender, DataGridViewCellEventArgs e)
+       private void grid_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
            /* int position = 0;
             if (grid.SelectedRows.Count > 0)
             {
                 int.TryParse(grid.SelectedRows[0].Cells[0].Value.ToString(), out position);
-                info inf = new info();
-                Edit_Item edit_it = new Edit_Item();
-                edit_it.lInfoId = position;
+                var inf = new Info();
+                Update update = new Update();
+                update.InfoId = position;
                 this.Hide();
-                edit_it.Show();
+                update.Show();
             }*/
             
         }
@@ -74,7 +73,7 @@ namespace MyInfoSafe.Forms.Service
         {
             if (e.KeyCode == Keys.Enter)
             {
-                var lSearch = search_txt.Text;
+                var lSearch = searchTxt.Text;
                 RefreshGrid(lSearch);
             }
         }
@@ -88,11 +87,10 @@ namespace MyInfoSafe.Forms.Service
 
         private void updateCurrentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var lPosiition = 0;
             if (grid.SelectedRows.Count > 0)
             {
+                var lPosiition = 0;
                 int.TryParse(grid.SelectedRows[0].Cells[0].Value.ToString(), out lPosiition);
-                var lInfo = new Info();
                 var lEditItem = new Update(lPosiition);
                 Hide();
                 lEditItem.Show();
@@ -105,15 +103,14 @@ namespace MyInfoSafe.Forms.Service
 
         private void removeCurrentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var lRes = MessageBox.Show("Are you sure, you want to remove it?","Removing Item",MessageBoxButtons.YesNo);
-            if (lRes.ToString() == "Yes")
+            var res = MessageBox.Show("Are you sure, you want to remove it?","Removing Item",MessageBoxButtons.YesNo);
+            if (res.ToString() == "Yes")
             {
-                var lPosition = 0;
                 if (grid.SelectedRows.Count > 0)
                 {
-                    int.TryParse(grid.SelectedRows[0].Cells[0].Value.ToString(), out lPosition);
-                    var lInfoItem = new Info();
-                    DBAction.DeleteInfoItem(lPosition);
+                    var position = 0;
+                    int.TryParse(grid.SelectedRows[0].Cells[0].Value.ToString(), out position);
+                    (new Info()).RemoveItem(position,Config.Constants.DBPassword);
                     RefreshGrid(string.Empty);
                 }
                 else
@@ -126,22 +123,22 @@ namespace MyInfoSafe.Forms.Service
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Hide();
-            var lChangePassword = new ChangePassword();
-            lChangePassword.Show();
+            var changePassword = new ChangePassword();
+            changePassword.Show();
         }
 
         private void bankFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Hide();
-            var lBankInfo = new BankForm();
-            lBankInfo.Show();
+            var bankInfo = new BankForm();
+            bankInfo.Show();
         }
 
         private void addNew_Click(object sender, EventArgs e)
         {
             Hide();
-            var lAddForm = new Add();
-            lAddForm.Show();
+            var addForm = new Add();
+            addForm.Show();
         }
 
       

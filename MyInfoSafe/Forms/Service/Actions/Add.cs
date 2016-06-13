@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
-using MyInfoSafe.Model;
-using MyInfoSafe.DataBase;
+using DALayer.API.Dto;
+using DALayer.API.Model;
+using MyInfoSafe.Shared;
 using Form = System.Windows.Forms.Form;
 
-namespace MyInfoSafe.Forms.Service.Action
+namespace MyInfoSafe.Forms.Service.Actions
 {
     public partial class Add : Form
     {
@@ -15,36 +16,34 @@ namespace MyInfoSafe.Forms.Service.Action
 
         private void add_new_item_Click(object sender, EventArgs e)
         {
-            var lService = service_txt.Text;
-            var lLogin = login_txt.Text;
-            var lPassword = pwd_txt.Text;
-            var lAddress = advanced_txt.Text;
-            if (lService == "" || lLogin == "" || lPassword == "")
+            var service = service_txt.Text;
+            var login = login_txt.Text;
+            var password = pwd_txt.Text;
+            var address = advanced_txt.Text;
+            if (service == String.Empty || login == String.Empty || password == String.Empty)
             {
                 MessageBox.Show("Set All Required Fields");
             }
             else
             {
-                var lInfo = new Info();
-                lInfo.Service=lService;
-                lInfo.Login=lLogin;
-                lInfo.Password=lPassword;
-                lInfo.Advanced=lAddress;
-                DBAction.InsertInfoItem(lInfo);
+                var infoDto = new InfoDto();
+                infoDto.Service = service;
+                infoDto.Login = login;
+                infoDto.Password = password;
+                infoDto.Advanced = address;
+                var info = new Info();
+                info.InsertItem(infoDto,Config.Constants.DBPassword);
                 Hide();
-                var lInfoForm = new ServiceForm();
-                lInfoForm.Show();
-
+                var infoForm = new ServiceForm();
+                infoForm.Show();
             }
         }
 
         private void Add_New_FormClosing(object sender, FormClosingEventArgs e)
         {
             Hide();
-            var lInfoForm = new ServiceForm();
-            lInfoForm.Show();
+            var infoForm = new ServiceForm();
+            infoForm.Show();
         }
-
-       
     }
 }

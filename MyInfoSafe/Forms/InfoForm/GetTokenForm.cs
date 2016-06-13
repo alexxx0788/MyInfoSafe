@@ -1,9 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
-using MyInfoSafe.Forms.Service;
-using MyInfoSafe.Model;
-using MyInfoSafe.forms;
+using MyInfoSafe.Shared;
 using Form = System.Windows.Forms.Form;
 
 namespace MyInfoSafe.Forms.InfoForm

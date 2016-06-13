@@ -1,4 +1,4 @@
-﻿namespace MyInfoSafe.forms
+﻿namespace MyInfoSafe
 {
     partial class Main
     {
@@ -37,28 +37,28 @@
             // 
             // openBtn
             // 
-            this.openBtn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.openBtn.Location = new System.Drawing.Point(66, 171);
+            this.openBtn.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.openBtn.Location = new System.Drawing.Point(6, 173);
             this.openBtn.Name = "openBtn";
             this.openBtn.Size = new System.Drawing.Size(114, 26);
             this.openBtn.TabIndex = 5;
-            this.openBtn.Text = "Open";
+            this.openBtn.Text = "enter";
             this.openBtn.UseVisualStyleBackColor = true;
             this.openBtn.Click += new System.EventHandler(this.enter_Click);
             // 
             // infoSafe
             // 
             this.infoSafe.AutoSize = true;
-            this.infoSafe.Font = new System.Drawing.Font("Times New Roman", 23F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.infoSafe.Location = new System.Drawing.Point(59, 20);
+            this.infoSafe.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoSafe.Location = new System.Drawing.Point(0, 9);
             this.infoSafe.Name = "infoSafe";
-            this.infoSafe.Size = new System.Drawing.Size(129, 36);
+            this.infoSafe.Size = new System.Drawing.Size(124, 33);
             this.infoSafe.TabIndex = 0;
             this.infoSafe.Text = "Info Safe";
             // 
             // password
             // 
-            this.password.Location = new System.Drawing.Point(66, 75);
+            this.password.Location = new System.Drawing.Point(6, 63);
             this.password.Name = "password";
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(114, 20);
@@ -69,10 +69,10 @@
             // 
             this.services.AutoSize = true;
             this.services.Checked = true;
-            this.services.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.services.Location = new System.Drawing.Point(66, 101);
+            this.services.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.services.Location = new System.Drawing.Point(6, 89);
             this.services.Name = "services";
-            this.services.Size = new System.Drawing.Size(96, 26);
+            this.services.Size = new System.Drawing.Size(106, 28);
             this.services.TabIndex = 3;
             this.services.TabStop = true;
             this.services.Text = "accounts";
@@ -81,19 +81,20 @@
             // bank
             // 
             this.bank.AutoSize = true;
-            this.bank.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bank.Location = new System.Drawing.Point(66, 133);
+            this.bank.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bank.Location = new System.Drawing.Point(6, 121);
             this.bank.Name = "bank";
-            this.bank.Size = new System.Drawing.Size(73, 26);
+            this.bank.Size = new System.Drawing.Size(88, 28);
             this.bank.TabIndex = 4;
-            this.bank.Text = "banks";
+            this.bank.Text = "money";
             this.bank.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(234, 211);
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ClientSize = new System.Drawing.Size(124, 211);
             this.Controls.Add(this.bank);
             this.Controls.Add(this.services);
             this.Controls.Add(this.infoSafe);

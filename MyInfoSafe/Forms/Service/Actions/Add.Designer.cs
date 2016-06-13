@@ -1,4 +1,4 @@
-﻿namespace MyInfoSafe.Forms.Service.Action
+﻿namespace MyInfoSafe.Forms.Service.Actions
 {
     partial class Add
     {
@@ -43,10 +43,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(24, 9);
+            this.label3.Font = new System.Drawing.Font("Tahoma", 15F);
+            this.label3.Location = new System.Drawing.Point(34, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(193, 33);
+            this.label3.Size = new System.Drawing.Size(165, 24);
             this.label3.TabIndex = 0;
             this.label3.Text = "Add New Account";
             // 
@@ -60,20 +60,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.label1.Location = new System.Drawing.Point(8, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 22);
+            this.label1.Size = new System.Drawing.Size(52, 17);
             this.label1.TabIndex = 8;
             this.label1.Text = "Service";
             // 
             // Login
             // 
             this.Login.AutoSize = true;
-            this.Login.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Login.Font = new System.Drawing.Font("Tahoma", 10F);
             this.Login.Location = new System.Drawing.Point(8, 103);
             this.Login.Name = "Login";
-            this.Login.Size = new System.Drawing.Size(51, 22);
+            this.Login.Size = new System.Drawing.Size(41, 17);
             this.Login.TabIndex = 10;
             this.Login.Text = "Login";
             // 
@@ -87,10 +87,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Font = new System.Drawing.Font("Tahoma", 10F);
             this.label2.Location = new System.Drawing.Point(8, 148);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 22);
+            this.label2.Size = new System.Drawing.Size(66, 17);
             this.label2.TabIndex = 12;
             this.label2.Text = "Password";
             // 
@@ -103,7 +103,7 @@
             // 
             // add_new_item
             // 
-            this.add_new_item.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.add_new_item.Font = new System.Drawing.Font("Tahoma", 10F);
             this.add_new_item.Location = new System.Drawing.Point(12, 404);
             this.add_new_item.Name = "add_new_item";
             this.add_new_item.Size = new System.Drawing.Size(217, 23);
@@ -123,10 +123,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Font = new System.Drawing.Font("Tahoma", 10F);
             this.label4.Location = new System.Drawing.Point(8, 207);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 22);
+            this.label4.Size = new System.Drawing.Size(97, 17);
             this.label4.TabIndex = 15;
             this.label4.Text = "Advanced Info";
             // 
@@ -134,6 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(249, 446);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.advanced_txt);

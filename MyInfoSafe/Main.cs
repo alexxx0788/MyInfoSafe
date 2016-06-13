@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Net;
 using System.Windows.Forms;
-using System.IO;
-using MyInfoSafe.Forms.Bank;
-using MyInfoSafe.Forms.InfoForm;
 using MyInfoSafe.Forms.Service;
-using MyInfoSafe.Model;
-using MyInfoSafe.Yandex;
-using MyInfoSafe.DataBase;
-using System.Net.Mail;
+using DALayer.API.Model;
+using MyInfoSafe.Forms.Bank;
+using MyInfoSafe.Shared;
 using Form = System.Windows.Forms.Form;
 
-namespace MyInfoSafe.forms
+namespace MyInfoSafe
 {
     public partial class Main : Form
     {
@@ -22,50 +17,49 @@ namespace MyInfoSafe.forms
 
         private void enter_Click(object sender, EventArgs e)
         {
-            var lPassword = password.Text;
-            Config.Constants.DBPassword = lPassword;
+            var pass = password.Text;
+            Config.Constants.DBPassword = pass;
             if (services.Checked)
             {
                 ShowInfoForm();
-                Model.Form.mSelectedForm = Config.Constants.Forms.services;
+                Shared.Form.SelectedForm = Config.Constants.Forms.Services;
             }
             else
             {
                 ShowBankForm();
-                Model.Form.mSelectedForm = Config.Constants.Forms.bank;
+                Shared.Form.SelectedForm = Config.Constants.Forms.Bank;
             }
 
         }
 
         private void ShowInfoForm()
         {
-            Result res = DBAction.IsValidPassword();
-            if (res.mCode > 0)
+            var res = User.IsValidPassword(Config.Constants.DBPassword);
+            if (res.Code > 0)
             {
                 Hide();
-                var lInfoForm = new ServiceForm();
-                lInfoForm.Show();
+                var infoForm = new ServiceForm();
+                infoForm.Show();
             }
             else
             {
-                MessageBox.Show(res.mMessage);
+                MessageBox.Show(res.Message);
                 password.Text = string.Empty;
             }
-            
         }
 
         private void ShowBankForm()
         {
-            var lResult = DBAction.IsValidPassword();
-            if (lResult.mCode > 0)
+            var res = User.IsValidPassword(Config.Constants.DBPassword);
+            if (res.Code > 0)
             {
                 Hide();
-                var lBankForm = new BankForm();
-                lBankForm.Show();
+                var bankForm = new BankForm();
+                bankForm.Show();
             }
             else
             {
-                MessageBox.Show(lResult.mMessage);
+                MessageBox.Show(res.Message);
                 password.Text = string.Empty;
             }
 

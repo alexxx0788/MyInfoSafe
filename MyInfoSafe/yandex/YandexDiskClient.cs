@@ -8,9 +8,6 @@ namespace MyInfoSafe.Yandex
     class YandexDiskClient
     {
         string token;
-        /// <summary>
-        /// Описание последней возникшей ошибки
-        /// </summary>
         public string error;
 
         private void myinit(string token, string error)

@@ -1,9 +1,10 @@
-﻿using MyInfoSafe.Yandex;
+﻿using System.Diagnostics;
 using System.IO;
-using System.Diagnostics;
-namespace MyInfoSafe.Model
+using MyInfoSafe.Yandex;
+
+namespace MyInfoSafe.Shared
 {
-    public class Common
+    class Common
     {
         public static void CloseForm()
         {
@@ -14,7 +15,7 @@ namespace MyInfoSafe.Model
                     YandexDiskClient lDIsk = new YandexDiskClient(Config.Constants.YandexToken);
                     lDIsk.PUT(Config.Constants.DBFile, Config.Constants.DBFile);
                 }
-                SaveDuplicate();
+             //   SaveDuplicate();
             }
             RemoveFile(Config.Constants.DBFile);
             Process.GetCurrentProcess().Kill();
@@ -22,13 +23,12 @@ namespace MyInfoSafe.Model
 
         private static void SaveDuplicate()
         {
-            var lDir = new DirectoryInfo(@"C:\Program Files\tempDb");
+            var lDir = new DirectoryInfo(Config.Constants.DbTempDir);
             if (!lDir.Exists)
             {
-                var lProgFilesDir = new DirectoryInfo(@"C:\Program Files");
-                lProgFilesDir.CreateSubdirectory("tempDb");
+                lDir = Directory.CreateDirectory(Config.Constants.DbTempDir);
             }
-            File.Copy(Config.Constants.DBFile, lDir.ToString() + "\\" + Config.Constants.DBFile,true);
+            File.Copy(Config.Constants.DBFile, lDir + "\\" + Config.Constants.DBFile, true);
         }
 
 

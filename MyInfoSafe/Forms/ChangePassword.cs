@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
+using DALayer.API.Model;
 using MyInfoSafe.Forms.Bank;
 using MyInfoSafe.Forms.Service;
-using MyInfoSafe.Model;
-using MyInfoSafe.DataBase;
+using MyInfoSafe.Shared;
 using Form = System.Windows.Forms.Form;
 
 namespace MyInfoSafe.forms
@@ -29,10 +29,12 @@ namespace MyInfoSafe.forms
                 }
                 else
                 {
-                    Result lResult= DBAction.ChangeDataBasePassword(old_pwd.Text,new_pwd.Text);
-                    if (lResult.mCode < 0)
+                    Result lResult= (new User()).ChangeDataBasePassword(old_pwd.Text,new_pwd.Text);
+                    Config.Constants.DBPassword = new_pwd.Text;
+                    Config.Constants.RewriteDB = true;
+                    if (lResult.Code < 0)
                     {
-                        MessageBox.Show(lResult.mMessage);
+                        MessageBox.Show(lResult.Message);
                     }
                     else
                     {
@@ -47,7 +49,7 @@ namespace MyInfoSafe.forms
         private void Change_Password_FormClosing(object sender, FormClosingEventArgs e)
         {
             Hide();
-            if (Model.Form.mSelectedForm == Config.Constants.Forms.services)
+            if (Shared.Form.SelectedForm == Config.Constants.Forms.Services)
             {
                 var lInfoForm = new ServiceForm();
                 lInfoForm.Show();
@@ -58,7 +60,6 @@ namespace MyInfoSafe.forms
                 lBankInfo.Show();
             }
         }
-
         
     }
 }
