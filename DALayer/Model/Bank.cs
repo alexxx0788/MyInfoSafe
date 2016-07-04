@@ -37,12 +37,12 @@ namespace DALayer.API.Model
                 {
                     existingItem.BankName = item.BankName;
                     existingItem.Comment = item.Comment;
-                    existingItem.EndDate = item.EndDate;
-                    existingItem.StartDate = item.StartDate;
-                    existingItem.Month = item.Month;
-                    existingItem.Persent = item.Persent;
+                   // existingItem.EndDate = item.EndDate;
+                    //existingItem.StartDate = item.StartDate;
+                   // existingItem.Month = item.Month;
+                  //  existingItem.Persent = item.Persent;
                     existingItem.Summ = item.Summ;
-                    existingItem.Type = item.Type;
+                  //  existingItem.Type = item.Type;
                 }
                 context.SaveChanges();
             }
