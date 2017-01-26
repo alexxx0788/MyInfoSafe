@@ -19,8 +19,8 @@ namespace MyInfoSafe
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
-                YandexDiskClient disk = new YandexDiskClient(Config.Constants.YandexToken);
-                disk.GET(Config.Constants.DBFile, Config.Constants.DBFile);
+               // YandexDiskClient disk = new YandexDiskClient(Config.Constants.YandexToken);
+               // disk.GET(Config.Constants.DBFile, Config.Constants.DBFile);
                 Application.Run(new Main());
             }
             catch 

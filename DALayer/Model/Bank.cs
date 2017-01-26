@@ -62,7 +62,7 @@ namespace DALayer.API.Model
         {
             using (var context = new InfoSafeContext(SqlCeConfiguration.GetConnectString(password)))
             {
-                var currs = context.Banks.Where(i => i.Type == 0);
+                var currs = context.Banks;
                 if (!string.IsNullOrEmpty(searchText))
                 {
                     return currs.Where(i => i.BankName.Contains(searchText)).ToList();

@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using DALayer.API.Model;
 using MyInfoSafe.forms;
 using MyInfoSafe.Forms.Bank;
 using MyInfoSafe.Forms.Service.Actions;
 using MyInfoSafe.Shared;
+using Newtonsoft.Json;
 using Form = System.Windows.Forms.Form;
 
 namespace MyInfoSafe.Forms.Service
@@ -14,6 +19,8 @@ namespace MyInfoSafe.Forms.Service
         public ServiceForm()
         {
             InitializeComponent();
+            var info = new Info();
+            //   SerializeDataToJson();
             RefreshGrid(string.Empty);
             if (!Config.Constants.WriteMode)
             {
@@ -21,6 +28,32 @@ namespace MyInfoSafe.Forms.Service
             }
         }
 
+
+        private void DeserializeDataToJson()
+        {
+            var info = new Info();
+            var text = File.ReadAllText(@"C:\ALEXXX\bank.txt");
+            try
+            {
+                dynamic list = JsonConvert.DeserializeObject(text);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
+        }
+
+        private void SerializeDataToJson()
+        {
+            var bank = new DALayer.API.Model.Info();
+            var list = bank.GetItemsList(string.Empty, Config.Constants.DBPassword);
+            var data = JsonConvert.SerializeObject(list);
+
+            File.WriteAllText(@"C:\ALEXXX\info.txt", data);
+        }
+        
         private void HideElements()
         {
             addNewToolStripMenuItem.Visible = false;

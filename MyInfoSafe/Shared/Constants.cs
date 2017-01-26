@@ -9,7 +9,7 @@ namespace MyInfoSafe.Shared
             private static string _dbPassword = string.Empty;
             private static readonly string yandexToken = ConfigurationManager.AppSettings["YandexToken"];
             private static readonly string dbTempDir = ConfigurationManager.AppSettings["DbTempDir"];
-            private static string DbFile = "info_base.sdf";
+            private static string DbFile = @"c:\\ALEXXX\\INFODb.sdf";
             private const string yandexAppId = "d7aa8a001f1a4a40b6148d91458d8419";
             private static bool rewriteDB = true;
             private static int version = 1;
