@@ -7,7 +7,7 @@ namespace DALayer.API.DbConfiguration
         public const string DataBaseName = "info_base.sdf";
         public static SqlCeConnection GetConnectString(string pass)
         {
-            var path = "C:\\ALEXXX\\INFODb.sdf";
+            var path = @"D:\GIT\MyInfoSafe\db\INFODb.sdf";
             var lConnString = "DataSource=\'" + path + "\'; Password=\'" + pass + "\'";
             return new SqlCeConnection(lConnString);
         }
