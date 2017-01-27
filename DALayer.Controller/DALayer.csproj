@@ -50,8 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DapperRepository.cs" />
-    <Compile Include="Model\Attributes.cs" />
+    <Compile Include="Controller\DapperRepository.cs" />
+    <Compile Include="Controller\InfoController.cs" />
+    <Compile Include="Controller\UserController.cs" />
+    <Compile Include="Helper\FieldsHelper.cs" />
+    <Compile Include="Model\Attributes\Attributes.cs" />
+    <Compile Include="Model\Dto\Note.cs" />
+    <Compile Include="Model\Dto\User.cs" />
+    <Compile Include="Model\Dto\Money.cs" />
     <Compile Include="Model\Dto\Info.cs" />
     <Compile Include="Model\Repository\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,9 +65,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helper\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

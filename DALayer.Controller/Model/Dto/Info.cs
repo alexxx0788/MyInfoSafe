@@ -1,15 +1,18 @@
-﻿namespace DALayer.Controller.Model.Dto
+﻿using DALayer.Controller.Model.Attributes;
+
+namespace DALayer.Controller.Model.Dto
 {
     public class Info
     {
+        [Selecteble][Removable]
         public int Id { get; set; }
-        [Insertable]
+        [Changeable][Searchable]  
         public string Service { get; set; }
-        [Insertable]
+        [Changeable]
         public string Login { get; set; }
-        [Insertable]
+        [Changeable]
         public string Password { get; set; }
-        [Insertable]
+        [Changeable]
         public string Details { get; set; }
     }
 }
