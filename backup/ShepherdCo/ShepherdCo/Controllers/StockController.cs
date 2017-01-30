@@ -16,8 +16,8 @@ namespace ShepherdCo.Controllers
         // GET api/stock
         public IEnumerable<StockView> Get()
         {
-            var conn = @"Data Source=KRKPC000088;Initial Catalog=ShepherdDb;Integrated Security=True;";// move to configuration
-            StockRepository stockController = new StockRepository(new SqlConnection(conn));
+           
+            StockRepository stockController = new StockRepository(new SqlConnection(Helper.connString));
             var items = stockController.GetList(); // move to configuration
             var list = new List<StockView>();
             foreach (var item in items)
@@ -29,6 +29,7 @@ namespace ShepherdCo.Controllers
                     (
                     new StockView()
                     {
+                        StockId = item.StockId,
                         Company = item.Company,
                         Price = currPrice,
                         Change = changeDelta,

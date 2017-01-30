@@ -15,18 +15,17 @@ namespace ShepherdCo.Controllers
         // GET api/balance
         public double Get()
         {
-            var conn = @"Data Source=KRKPC000088;Initial Catalog=ShepherdDb;Integrated Security=True;";// move to configuration
-            UserController userController = new UserController(new SqlConnection(conn));
-            var user=  userController.GetEntry(1); // move to configuration
+            UserRepository userRepository = new UserRepository(new SqlConnection(Helper.connString));
+            var user=  userRepository.GetEntry(1); // move to configuration
             return user.Balance;
         }
 
         // PUT api/balance
-        public void Put(User user)
+        public void Put(int id,User user)
         {
-            var conn = @"Data Source=KRKPC000088;Initial Catalog=ShepherdDb;Integrated Security=True;";// move to configuration
-            UserController userController = new UserController(new SqlConnection(conn));
-            userController.Update(user,1); // move to configuration
+            //var user = new User() {Balance = balance, Login = login, UserId = userId};
+            UserRepository userRepository = new UserRepository(new SqlConnection(Helper.connString));
+            userRepository.Update(user, id); // move to configuration
         }
     }
 }

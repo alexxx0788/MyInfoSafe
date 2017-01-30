@@ -14,10 +14,10 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             var conn = @"Data Source=KRKPC000088;Initial Catalog=ShepherdDb;Integrated Security=True;";
-           /* UserController user = new UserController(new SqlConnection(conn));
+           /* UserRepository user = new UserRepository(new SqlConnection(conn));
            //// var userDto = new User() {UserId = 1,Balance = 15000,Login = "TestUser"};
             user.Update(userDto,1);*/
-            //UserController user = new UserController(new SqlConnection(conn));
+            //UserRepository user = new UserRepository(new SqlConnection(conn));
             StockRepository stock = new StockRepository(new SqlConnection(conn));
         }
     }

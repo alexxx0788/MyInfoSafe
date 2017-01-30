@@ -37,7 +37,7 @@ namespace ShepherdCoAPI.Repository
 
         public virtual T GetEntry(int id)
         {
-            var pattern = $"SELECT * FROM [{_type.Name}] WHERE UserID={id}";
+            var pattern = $"SELECT * FROM [{_type.Name}] WHERE {FieldsHelper.GetSearchByField(_type)}={id}";
             return Db.Query<T>(pattern).SingleOrDefault();
         }
 

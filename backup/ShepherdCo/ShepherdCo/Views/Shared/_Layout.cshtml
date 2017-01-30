@@ -5,28 +5,48 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .green {
+            color:green
+        }
+        .red {
+            color:red
+        }
+         .modal-content {
+             width: 600px !important;
+             margin: 30px auto !important;
+         }
+    </style>
 </head>
-<body data-ng-app="APIModule">
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div ng-controller="APIController" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a>My balance: {{user.balance}} €</a></li>
-                    </ul>
-                </div>  
-            </div>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/Home/Balance/1" class="modal-link" >My balance: <span class="balance"></span> €</a></li>
+                <li><a>View Orders</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="container body-content">
     @RenderBody()
 </div>
 @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+<script src="~/Scripts/main.js"></script>
+<div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-content">
+    </div>
+</div>
 </body>
 </html>

@@ -6,9 +6,8 @@
     }
 </style>
 <body data-ng-app="APIModule">
-    <div ng-controller="modalcontroller">
-        <div id="tblSubs" ng-controller="APIController">
-            <table>
+        <div id="tblSubs">
+            <table id="stocks">
                 <tr>
                     <th>Symbol</th>
                     <th>Last Price</th>
@@ -16,25 +15,10 @@
                     <th>%Change</th>
                     <th></th>
                 </tr>
-                <tbody data-ng-repeat="stock in stocks">
-                    <tr>
-                        <td>{{stock.CompanyName}}</td>
-                        <td>{{stock.Price}}</td>
-                        <td><span style="color: {{stock.Change>0 ? 'green' : 'red'}}">{{stock.Change}}</span></td>
-                        <td><span style="color: {{stock.ChangePersentage>0 ? 'green' : 'red'}}">{{stock.ChangePersentage}}</span></td>
-                        <td><button class="btn btn-default" type="button" ng-click="openModal()">Click to Open Modal</button></td>
-                    </tr>
-                </tbody>
+                    <tbody id="tableBody">
+                    </tbody>
             </table>
-        </div>
+            
 </div>
 </body>
-<script src="~/Scripts/angular.js"></script>
 
-<script src="~/Scripts/APIScripts/Module.js"></script>
-<script src="~/Scripts/APIScripts/Service.js"></script>
-<script src="~/Scripts/APIScripts/Controller.js"></script>
-<script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-<script src="~/Scripts/angular-route.min.js"></script>
-<script src="~/Scripts/angular-animate.min.js"></script>

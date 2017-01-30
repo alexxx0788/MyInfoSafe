@@ -7,9 +7,9 @@ using ShepherdCoAPI.Shared.Repository;
 
 namespace ShepherdCoAPI.Repository
 {
-    public class UserController : DapperRepository<User>
+    public class UserRepository : DapperRepository<User>
     {
-        public UserController(IDbConnection connection) : base(connection)
+        public UserRepository(IDbConnection connection) : base(connection)
         {
             if (!base.GetList().Any())
             {

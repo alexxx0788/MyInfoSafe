@@ -1,1 +1,20 @@
-﻿partial view
+﻿@model ShepherdCoAPI.Model.Stock
+<div class="modal-body">
+    <fieldset>
+        <legend>Stock details</legend>
+        <p>
+            DinnerID:
+            @Model.StockId
+        </p>
+    </fieldset>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#approve-btn').click(function () {
+            $('#modal-container').modal('hide');
+        });
+    });
+</script>
+
+
