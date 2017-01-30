@@ -38,7 +38,9 @@ namespace ShepherdCoAPI.Helper
         private static double GetTestStockPrice()
         {
             var random = new Random();
-            return Math.Round(random.NextDouble() * random.Next(0, 1000),3);
+            var i = random.Next(2, 200);
+            var d = random.Next(10, 99);
+            return double.Parse($"{i}.{d}");
         }
     }
 }

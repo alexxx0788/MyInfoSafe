@@ -37,7 +37,7 @@ namespace ShepherdCoAPI.Repository
 
         public virtual T GetEntry(int id)
         {
-            var pattern = $"SELECT * FROM {_type.Name} WHERE ID={id}";
+            var pattern = $"SELECT * FROM [{_type.Name}] WHERE UserID={id}";
             return Db.Query<T>(pattern).SingleOrDefault();
         }
 
@@ -61,7 +61,9 @@ namespace ShepherdCoAPI.Repository
 
         public virtual bool Update(T item, int id)
         {
-            int rowsAffected = Db.Execute($"UPDATE [{_type.Name}] SET {FieldsHelper.GetFieldsForUpdate(_type)} WHERE {FieldsHelper.GetSearchByField(_type)} = {id}", item);
+            var pattern =
+                $"UPDATE [{_type.Name}] SET {FieldsHelper.GetFieldsForUpdate(_type)} WHERE {FieldsHelper.GetSearchByField(_type)} = {id}";
+            int rowsAffected = Db.Execute(pattern, item);
             if (rowsAffected > 0)
             {
                 return true;

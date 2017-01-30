@@ -9,12 +9,13 @@ namespace ShepherdCoAPI.Model
 {
     public class Stock
     {
+        [SearchBy]
         public int StockId { get; set; }
-        [Insert][Update]
+        [Insert]
         public string Company { get; set; }
         [Insert][Update]
         public double Price { get; set; }
-        [Insert][Update]
+        [Insert]
         public int Amount { get; set; }
 
     }
