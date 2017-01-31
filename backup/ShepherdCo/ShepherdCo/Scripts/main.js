@@ -4,6 +4,9 @@
     setInterval(function () { LoadStocks(); }, 5000);
 });
 
+$('.load-stocks').click(function() {
+    ReloadStocks();
+});
 
 function LoadBalance() {
     $.get("api/balance", function (data) {
@@ -11,25 +14,38 @@ function LoadBalance() {
     });
 }
 
+
+function ReloadStocks() {
+    $.get("api/load", function (data) {
+        LoadStocks();
+    });
+}
+
 function LoadStocks() {
     $.get("api/stock", function (data) {
         $('#tableBody').empty();
         $(data).each(function (index, element) {
+            if ($('#stock_price_' + element.StockId).length > 0) {
+                $('#stock_price_' + element.StockId).text(element.Price);
+            }
             $('#tableBody').append(GenerateTableRow(element));
         });
     });
 }
 
 function GenerateTableRow(element) {
-    return '<tr><td>' + element.Company + '</td><td>' + element.Price + '</td><td><span class="' + GetChangeClassName(element.Change) + '">' + element.Change + '</span></td><td><span class="' + GetChangeClassName(element.ChangePersentage) + '">' + element.ChangePersentage + '</span></td><td>'+GenerateBuyButton(element.StockId)+'</td></tr>';
+    return '<tr><td>' + element.Company + '</td><td>' + element.Price + '</td><td><span class="' + GetChangeClassName(element.Change) + '">' + element.Change + '</span></td><td><span class="' + GetChangeClassName(element.ChangePersentage) + '">' + element.ChangePersentage + '</span></td><td>' + GenerateBuyButton(element.StockId, element.Amount) + '</td></tr>';
 }
 
 function GetChangeClassName(value) {
     return value > 0 ? 'green' : 'red';
 }
 
-function GenerateBuyButton(id) {
-    return '<button href="/Home/Order/' + id + '" class="modal-link btn btn-success">Buy</button>';
+function GenerateBuyButton(id,amount) {
+    if (amount > 0) {
+        return '<button href="/Home/Order/' + id + '" class="modal-link btn btn-success">Buy</button>';
+    }
+    return '';
 }
 
 function UpdateBalance(successFunc, login, balance, userId) {
@@ -52,12 +68,11 @@ function UpdateBalance(successFunc, login, balance, userId) {
     });
 }
 
-function BuyStock(successFunc, stockId) {
+function BuyStock(successFunc, stockId,amount) {
     var order = {
         stockId: stockId,
-        Date: new Date()
+        amount : amount
     };
-
     var json = JSON.stringify(order);
     $.ajax({
         url: '/api/order',
@@ -65,12 +80,16 @@ function BuyStock(successFunc, stockId) {
         contentType: "application/json; charset=utf-8",
         data: json,
         success: function (result) {
-            LoadBalance();
-            successFunc;
+            $('.message').text(result.Data.Message);
+            if (result.Data.Status == true) {
+                LoadBalance();
+                successFunc;
+            } else {
+                $('.message').attr('class', 'red');
+            }
         }
     });
 }
-
 
 $(function() {
     // Initialize numeric spinner input boxes

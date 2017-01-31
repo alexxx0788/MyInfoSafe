@@ -10,7 +10,7 @@ namespace ShepherdCoAPI.Helper
     public static class DummyData
     {
         private const string Chars = "abcdefghijklmnopqrstuvw";
-        internal static User GetTestUser()
+        public static User GetTestUser()
         {
             return new User()
             {
@@ -18,7 +18,7 @@ namespace ShepherdCoAPI.Helper
                 Login = "TestUser"
             };
         }
-        internal static Stock GetTestCompanyStock()
+        public static Stock GetTestCompanyStock()
         {
             return new Stock()
             {
@@ -28,14 +28,14 @@ namespace ShepherdCoAPI.Helper
             };
         }
 
-        private static string GetTestCompanyName()
+        public static string GetTestCompanyName()
         {
             var random = new Random();
             return new string(Enumerable.Repeat(Chars, 3)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        private static double GetTestStockPrice()
+        public static double GetTestStockPrice()
         {
             var random = new Random();
             var i = random.Next(2, 200);

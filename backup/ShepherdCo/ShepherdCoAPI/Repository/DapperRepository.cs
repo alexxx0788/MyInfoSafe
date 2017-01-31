@@ -12,32 +12,15 @@ namespace ShepherdCoAPI.Repository
     {
         protected readonly IDbConnection Db;
         private readonly Type _type;
-
         public DapperRepository(IDbConnection connection)
         {
             Db = connection;
             _type = typeof(T);
         }
 
-        public virtual bool Delete(int id)
+        public virtual T GetEntryById(int id)
         {
-            var pattern = $"DELETE FROM {_type.Name} WHERE {FieldsHelper.GetDeleteByField(_type)}={id}";
-            var rowsAffected = Db.Execute(pattern);
-            if (rowsAffected > 0)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual T GetEntry(int id)
-        {
-            var pattern = $"SELECT * FROM [{_type.Name}] WHERE {FieldsHelper.GetSearchByField(_type)}={id}";
+            var pattern = $"SELECT * FROM [{_type.Name}] WHERE {FieldsHelper.GetPrimaryKey(_type)}={id}";
             return Db.Query<T>(pattern).SingleOrDefault();
         }
 
@@ -46,7 +29,6 @@ namespace ShepherdCoAPI.Repository
             var pattern = $"SELECT * FROM [{_type.Name}]";
             return Db.Query<T>(pattern);
         }
-
         public virtual bool Insert(T item)
         {
             var pattern =
@@ -62,8 +44,36 @@ namespace ShepherdCoAPI.Repository
         public virtual bool Update(T item, int id)
         {
             var pattern =
-                $"UPDATE [{_type.Name}] SET {FieldsHelper.GetFieldsForUpdate(_type)} WHERE {FieldsHelper.GetSearchByField(_type)} = {id}";
+                $"UPDATE [{_type.Name}] SET {FieldsHelper.GetFieldsForUpdate(_type)} WHERE {FieldsHelper.GetPrimaryKey(_type)} = {id}";
             int rowsAffected = Db.Execute(pattern, item);
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+
+        public virtual bool Delete(int id)
+        {
+            var pattern = $"DELETE FROM {_type.Name} WHERE {FieldsHelper.GetPrimaryKey(_type)}={id}";
+            var rowsAffected = Db.Execute(pattern);
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void Dispose()
+        {
+            Db.Dispose();
+        }
+
+        public bool DeleteAll()
+        {
+            var pattern = $"DELETE FROM {_type.Name}";
+            var rowsAffected = Db.Execute(pattern);
             if (rowsAffected > 0)
             {
                 return true;

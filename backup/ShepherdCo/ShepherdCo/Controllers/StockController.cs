@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ShepherdCo.Models;
+using ShepherdCoAPI.Helper;
 using ShepherdCoAPI.Model;
 using ShepherdCoAPI.Repository;
 
@@ -13,10 +14,10 @@ namespace ShepherdCo.Controllers
 {
     public class StockController : ApiController
     {
+        
         // GET api/stock
         public IEnumerable<StockView> Get()
         {
-           
             StockRepository stockController = new StockRepository(new SqlConnection(Helper.connString));
             var items = stockController.GetList(); // move to configuration
             var list = new List<StockView>();
@@ -33,7 +34,8 @@ namespace ShepherdCo.Controllers
                         Company = item.Company,
                         Price = currPrice,
                         Change = changeDelta,
-                        ChangePersentage = changeDeltaPersentage
+                        ChangePersentage = changeDeltaPersentage,
+                        Amount = item.Amount
                     }
                     );
                 item.Price = currPrice;

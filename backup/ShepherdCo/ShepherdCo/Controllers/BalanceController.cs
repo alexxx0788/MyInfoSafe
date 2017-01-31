@@ -16,7 +16,7 @@ namespace ShepherdCo.Controllers
         public double Get()
         {
             UserRepository userRepository = new UserRepository(new SqlConnection(Helper.connString));
-            var user=  userRepository.GetEntry(1); // move to configuration
+            var user=  userRepository.GetEntryById(1); // move to configuration
             return user.Balance;
         }
 

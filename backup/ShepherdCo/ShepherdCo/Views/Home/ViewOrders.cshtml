@@ -1,21 +1,24 @@
 ﻿@model IEnumerable<ShepherdCoAPI.Model.Order>
-
-<table class="table">
+<div class="modal-body">
+    <fieldset>
+        <legend>User Orders</legend>
+    </fieldset>
+</div>
+<table id="stocks">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th></th>
+        <th>Company</th>
+        <th>Price</th>
+        <th>DateTime</th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-        </td>
-    </tr>
-}
-
+    <tbody id="tableBody"></tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@Html.DisplayFor(modelItem => item.Stock.Company)</th>
+            <th>@Html.DisplayFor(modelItem => item.Price)</th>
+            <th>@Html.DisplayFor(modelItem => item.DateTime)</th>
+        </tr>
+    }
 </table>
+<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+

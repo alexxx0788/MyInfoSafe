@@ -41,6 +41,10 @@
       <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Dapper.Mapper, Version=1.50.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.Mapper.1.50.1\lib\net451\Dapper.Mapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Helper\DummyData.cs" />
     <Compile Include="Helper\FieldsHelper.cs" />
+    <Compile Include="Helper\Responce.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\Stock.cs" />
     <Compile Include="Model\User.cs" />
@@ -61,17 +66,12 @@
     <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\StockRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
-    <Compile Include="Shared\Attributes\CustomAttributes.cs" />
+    <Compile Include="Shared\Attributes\PrimaryKeyAttribute.cs" />
+    <Compile Include="Shared\Dto\IDto.cs" />
     <Compile Include="Shared\Repository\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Scripts\angular.min.js.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scripts\angular-mocks.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

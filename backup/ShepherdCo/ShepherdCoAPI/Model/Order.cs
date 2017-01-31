@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ShepherdCoAPI.Shared.Attributes;
+using ShepherdCoAPI.Shared.Dto;
 
 namespace ShepherdCoAPI.Model
 {
-    public class Order
+    public class Order:IDto
     {
+        [PrimaryKey]
         public int OrderId { get; set; }
-        [Insert][Update]
+        public int StockId { get; set; }
         public Stock Stock { get; set; }
-        [Insert][Update]
+        public int UserId { get; set; }
         public User User { get; set; }
-        [Insert][Update]
-        public DateTime Date { get; set; }
+        public DateTime DateTime { get; set; }
+        public double Price { get; set; }
 
     }
 }

@@ -21,21 +21,21 @@ namespace ShepherdCo.Controllers
         public ActionResult Order(int id)
         {
             StockRepository stockController = new StockRepository(new SqlConnection(Helper.connString));
-            var stock = stockController.GetEntry(id);
+            var stock = stockController.GetEntryById(id);
             return PartialView("Order", stock);
         }
 
         public ActionResult Balance(int id)
         {
             UserRepository userController = new UserRepository(new SqlConnection(Helper.connString));
-            var user = userController.GetEntry(id);
+            var user = userController.GetEntryById(id);
             return PartialView("Balance", user);
         }
 
         public ActionResult ViewOrders()
         {
             OrderRepository orderController = new OrderRepository(new SqlConnection(Helper.connString));
-            var orders = orderController.GetList(1); //move to config
+            var orders = orderController.GetListOfOrders(1); //move to config
             return PartialView("ViewOrders", orders);
         }
 

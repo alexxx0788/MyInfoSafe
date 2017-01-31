@@ -19,7 +19,7 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 IF OBJECT_ID ( 'ShepherdDb.GetOrders', 'P' ) IS NOT NULL   
-    DROP PROCEDURE Purchasing.uspVendorAllInfo;  
+    DROP PROCEDURE Purchasing.GetOrders;  
 GO 
 Create  PROCEDURE GetOrders(@UserId INT)
 AS

@@ -1,18 +1,33 @@
 ﻿@model ShepherdCoAPI.Model.Stock
 <div class="modal-body">
     <fieldset>
-        <legend>Buy stock of @Model.Company</legend>
-    </fieldset>
+        <legend>@Model.Company</legend>
+        <div>
+            You can buy stocks of <b>@Model.Company</b> company<br/>
+            Awailable amount of stocks is @Model.Amount<br />
+        </div>
+        <div>
+            Price <span style="font-weight: bold" id="stock_price_@Model.StockId">@Model.Price</span><br />
+            <span>Buy stocks <input style="width: 50px" id="stocksAmount" /></span>
+        </div>
+    </fieldset><br />
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    <button type="submit" id="approve-btn" class="btn btn-danger">Buy</button><br />
+    <span style="text-align: center" class="message"></span>
 </div>
-<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-<button type="submit" id="approve-btn" class="btn btn-danger">Buy</button>
+
 
 <script type="text/javascript">
     $(function() {
-        $('#approve-btn').click(function() {
-                BuyStock($('#modal-container').modal('hide'), '@Model.StockId');
+        $('#approve-btn').click(function () {
+            var val = $('#stocksAmount').val();
+            if (isNaN(val)) {
+                alert('Stock amount must be a number');
+            } else {
+                BuyStock($('#modal-container').modal('hide'), '@Model.StockId', val);
+            }
         });
-        });
+    });
 </script>
 
 

@@ -13,6 +13,8 @@ CREATE TABLE [dbo].[Order](
 	[StockId] [int] NOT NULL,
 	[UserId] [int] NOT NULL,
 	[DateTime] [datetime] NOT NULL,
+	[Price] [money] NOT NULL,
+	[Amount] [int] NOT NULL
  CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED 
 (
 	[OrderId] ASC

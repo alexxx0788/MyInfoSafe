@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Linq;
 using ShepherdCoAPI.Helper;
 using ShepherdCoAPI.Model;
-using ShepherdCoAPI.Shared.Repository;
 
 namespace ShepherdCoAPI.Repository
 {
@@ -15,11 +13,6 @@ namespace ShepherdCoAPI.Repository
             {
                 base.Insert(DummyData.GetTestUser());
             }
-        }
-
-        public void Dispose()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
