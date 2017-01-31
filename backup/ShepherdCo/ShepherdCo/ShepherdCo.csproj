@@ -131,6 +131,7 @@
     <Compile Include="Controllers\BalanceController.cs" />
     <Compile Include="Controllers\Helper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -185,6 +186,7 @@
     <Content Include="Views\Home\Order_old.cshtml" />
     <Content Include="Views\Home\Order.cshtml" />
     <Content Include="Views\Home\Balance.cshtml" />
+    <Content Include="Views\Home\ViewOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShepherdCoAPI\ShepherdCoAPI.csproj">

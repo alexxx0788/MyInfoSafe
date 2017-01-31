@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Security.Policy;
@@ -11,6 +12,7 @@ namespace ShepherdCoAPI.Repository
 {
     public class OrderRepository : DapperRepository<Order>
     {
+        private Type _type = typeof(Order);
         public OrderRepository(IDbConnection connection) : base(connection)
         {
         }
@@ -20,10 +22,28 @@ namespace ShepherdCoAPI.Repository
             throw new System.NotImplementedException();
         }
 
-        public override IEnumerable<Order> GetList()
+        public bool Insert(int stockId,int userId,DateTime date)
+        {
+            var order = new
+            {
+                StockId = stockId,
+                UserId = userId,
+                DateTime = date
+            };
+            var pattern =
+                $"INSERT INTO [Order](StockId,UserId,DateTime) VALUES (@StockId,@UserId,@DateTime)";
+            var rowsAffected = Db.Execute(pattern, order);
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public IEnumerable<Order> GetList(int userId)
         {
             DynamicParameters param = new DynamicParameters();
-            param.Add("@UserId", 1);
+            param.Add("@UserId", userId);
             /*  var item = Db.Query<Order,Stock,User>
                   ("GetOrders",
                   param,
@@ -42,7 +62,7 @@ namespace ShepherdCoAPI.Repository
                 param,
                 splitOn:"UserId",
                 commandType: CommandType.StoredProcedure).ToList();
-            return null;
+            return list;
         }
     }
 }

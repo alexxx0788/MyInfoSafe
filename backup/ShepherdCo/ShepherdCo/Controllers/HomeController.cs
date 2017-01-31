@@ -32,5 +32,12 @@ namespace ShepherdCo.Controllers
             return PartialView("Balance", user);
         }
 
+        public ActionResult ViewOrders()
+        {
+            OrderRepository orderController = new OrderRepository(new SqlConnection(Helper.connString));
+            var orders = orderController.GetList(1); //move to config
+            return PartialView("ViewOrders", orders);
+        }
+
     }
 }

@@ -52,6 +52,25 @@ function UpdateBalance(successFunc, login, balance, userId) {
     });
 }
 
+function BuyStock(successFunc, stockId) {
+    var order = {
+        stockId: stockId,
+        Date: new Date()
+    };
+
+    var json = JSON.stringify(order);
+    $.ajax({
+        url: '/api/order',
+        type: 'POST',
+        contentType: "application/json; charset=utf-8",
+        data: json,
+        success: function (result) {
+            LoadBalance();
+            successFunc;
+        }
+    });
+}
+
 
 $(function() {
     // Initialize numeric spinner input boxes

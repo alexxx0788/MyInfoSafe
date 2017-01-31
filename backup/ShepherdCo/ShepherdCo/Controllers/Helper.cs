@@ -7,6 +7,6 @@ namespace ShepherdCo.Controllers
 {
     public static class Helper
     {
-        public static string connString = @"Data Source=DESKTOP-TR5K0E8\SQLSERVER;Initial Catalog=ShepherdDb;Integrated Security=True;";// move to configuration
+        public static string connString = @"Data Source=KRKPC000088;Initial Catalog=ShepherdDb;Integrated Security=True;";// move to configuration
     }
 }
