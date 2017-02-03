@@ -29,7 +29,7 @@ namespace MyInfoSafe.forms
                 }
                 else
                 {
-                    Result lResult= (new User()).ChangeDataBasePassword(old_pwd.Text,new_pwd.Text);
+                    Result lResult = (new User()).ChangeDataBasePassword(old_pwd.Text, new_pwd.Text);
                     Config.Constants.DBPassword = new_pwd.Text;
                     Config.Constants.RewriteDB = true;
                     if (lResult.Code < 0)
@@ -60,6 +60,5 @@ namespace MyInfoSafe.forms
                 lBankInfo.Show();
             }
         }
-        
     }
 }

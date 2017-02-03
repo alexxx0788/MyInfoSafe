@@ -10,6 +10,7 @@ namespace MyInfoSafe.Forms.Service.Actions
     public partial class Update : Form
     {
         public int InfoId;
+
         public Update(int infoId)
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace MyInfoSafe.Forms.Service.Actions
             login_txt.Text = infoDto.Login;
             pwd_txt.Text = infoDto.Password;
             advanced_txt.Text = infoDto.Advanced;
-            (new Info()).UpdateItem(infoDto,Config.Constants.DBPassword);
+            (new Info()).UpdateItem(infoDto, Config.Constants.DBPassword);
         }
 
         private void edit_Click(object sender, EventArgs e)

@@ -1,6 +1,4 @@
-﻿using DALayer.Controller.Model.Attributes;
-
-namespace DALayer.Controller.Model.Dto
+﻿namespace IStor.DAL.Model.Dto
 {
     public class Note
     {

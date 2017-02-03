@@ -42,7 +42,6 @@ namespace MyInfoSafe.Forms.Service
                 Console.WriteLine(e);
                 throw;
             }
-            
         }
 
         private void SerializeDataToJson()
@@ -53,21 +52,21 @@ namespace MyInfoSafe.Forms.Service
 
             File.WriteAllText(@"C:\ALEXXX\info.txt", data);
         }
-        
+
         private void HideElements()
         {
             addNewToolStripMenuItem.Visible = false;
             removeCurrentToolStripMenuItem.Visible = false;
             optionToolStripMenuItem.Visible = false;
         }
-        
+
         private void refresh_Click(object sender, EventArgs e)
         {
             var search = searchTxt.Text;
             RefreshGrid(search);
         }
 
-        private void RefreshGrid (string search)
+        private void RefreshGrid(string search)
         {
             var info = new Info();
             var lInfoList = info.GetItemsList(search, Config.Constants.DBPassword);
@@ -82,19 +81,18 @@ namespace MyInfoSafe.Forms.Service
             searchTxt.Text = string.Empty;
         }
 
-       private void grid_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void grid_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-           /* int position = 0;
-            if (grid.SelectedRows.Count > 0)
-            {
-                int.TryParse(grid.SelectedRows[0].Cells[0].Value.ToString(), out position);
-                var inf = new Info();
-                Update update = new Update();
-                update.InfoId = position;
-                this.Hide();
-                update.Show();
-            }*/
-            
+            /* int position = 0;
+             if (grid.SelectedRows.Count > 0)
+             {
+                 int.TryParse(grid.SelectedRows[0].Cells[0].Value.ToString(), out position);
+                 var inf = new Info();
+                 Update update = new Update();
+                 update.InfoId = position;
+                 this.Hide();
+                 update.Show();
+             }*/
         }
 
         private void InfoForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -136,14 +134,14 @@ namespace MyInfoSafe.Forms.Service
 
         private void removeCurrentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var res = MessageBox.Show("Are you sure, you want to remove it?","Removing Item",MessageBoxButtons.YesNo);
+            var res = MessageBox.Show("Are you sure, you want to remove it?", "Removing Item", MessageBoxButtons.YesNo);
             if (res.ToString() == "Yes")
             {
                 if (grid.SelectedRows.Count > 0)
                 {
                     var position = 0;
                     int.TryParse(grid.SelectedRows[0].Cells[0].Value.ToString(), out position);
-                    (new Info()).RemoveItem(position,Config.Constants.DBPassword);
+                    (new Info()).RemoveItem(position, Config.Constants.DBPassword);
                     RefreshGrid(string.Empty);
                 }
                 else
@@ -173,7 +171,5 @@ namespace MyInfoSafe.Forms.Service
             var addForm = new Add();
             addForm.Show();
         }
-
-      
     }
 }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
-using DALayer.Controller.Helper;
-using DALayer.Controller.Model.Repository;
+using IStor.DAL.Helper;
+using IStor.DAL.Model.Repository;
 
-namespace DALayer.Controller.Controller
+namespace IStor.DAL.Controller
 {
     public class DapperRepository<T> : IRepository<T> where T : class
     {
@@ -20,7 +20,7 @@ namespace DALayer.Controller.Controller
 
         public bool Delete(int id)
         {
-            var pattern = $"DELETE FROM {_type.Name} WHERE {FieldsHelper.GetFieldForRemove(_type)}={id}";
+            var pattern = $"DELETE FROM {_type.Name} WHERE {FieldsHelper.GetPrimaryKeyField(_type)}={id}";
             var rowsAffected = _db.Execute(pattern);
             if (rowsAffected > 0)
             {
@@ -42,14 +42,14 @@ namespace DALayer.Controller.Controller
 
         public IEnumerable<T> GetList(string service)
         {
-            var pattern = $"SELECT * FROM [{_type.Name}] WHERE {FieldsHelper.GetFieldForSearch(_type)} like '%{service}%'";
+            var pattern = $"SELECT * FROM [{_type.Name}] WHERE {FieldsHelper.GetPrimaryKeyField(_type)} like '%{service}%'";
             return _db.Query<T>(pattern);
         }
 
         public bool Insert(T item)
         {
             var pattern =
-                $"INSERT INTO [{_type.Name}]({FieldsHelper.GetFieldsForInsert(_type, ",")}) VALUES (@{FieldsHelper.GetFieldsForInsert(_type, ", @")})";
+                $"INSERT INTO [{_type.Name}]({FieldsHelper.GetPrimaryKeyField(_type)}) VALUES (@{FieldsHelper.GetPrimaryKeyField(_type)})";
             var rowsAffected = _db.Execute(pattern, item);
             if (rowsAffected > 0)
             {
@@ -60,7 +60,7 @@ namespace DALayer.Controller.Controller
 
         public bool Update(T item,int id)
         {
-            int rowsAffected = this._db.Execute($"UPDATE [{_type.Name}] SET {FieldsHelper.GetFieldsForUpdate(_type)} WHERE {FieldsHelper.GetFieldForSearch(_type)} = {id}" , item);
+            int rowsAffected = this._db.Execute($"UPDATE [{_type.Name}] SET {FieldsHelper.GetPrimaryKeyField(_type)} WHERE {FieldsHelper.GetPrimaryKeyField(_type)} = {id}" , item);
             if (rowsAffected > 0)
             {
                 return true;

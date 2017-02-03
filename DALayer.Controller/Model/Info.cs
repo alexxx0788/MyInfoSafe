@@ -1,18 +1,14 @@
-﻿using DALayer.Controller.Model.Attributes;
+﻿using IStor.DAL.Model.Attributes;
 
-namespace DALayer.Controller.Model.Dto
+namespace IStor.DAL.Model.Dto
 {
     public class Info
     {
-        [Selecteble][Removable]
+        [PrimaryKey]
         public int Id { get; set; }
-        [Changeable][Searchable]  
         public string Service { get; set; }
-        [Changeable]
         public string Login { get; set; }
-        [Changeable]
         public string Password { get; set; }
-        [Changeable]
         public string Details { get; set; }
     }
 }

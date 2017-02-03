@@ -19,32 +19,39 @@ namespace MyInfoSafe.Shared
             {
                 ShowOldBank = false;
             }
+
             public static string DBFile
             {
                 get { return DbFile; }
             }
+
             public static string DbTempDir
             {
                 get { return dbTempDir; }
             }
+
             public static string DBPassword
             {
                 get { return _dbPassword; }
                 set { _dbPassword = value; }
             }
+
             public static string YandexToken
             {
                 get { return yandexToken; }
             }
+
             public static string YandexAppId
             {
                 get { return yandexAppId; }
             }
+
             public static bool RewriteDB
             {
                 get { return rewriteDB; }
                 set { rewriteDB = value; }
             }
+
             public enum Forms
             {
                 Services,
@@ -58,6 +65,7 @@ namespace MyInfoSafe.Shared
                 get { return version; }
                 set { version = value; }
             }
+
             public static bool WriteMode
             {
                 get { return writeMode; }

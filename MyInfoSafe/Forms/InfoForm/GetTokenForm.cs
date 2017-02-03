@@ -20,7 +20,8 @@ namespace MyInfoSafe.Forms.InfoForm
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(string.Format("https://oauth.yandex.ru/authorize?response_type=token&client_id={0}", Config.Constants.YandexAppId));
+            Process.Start(string.Format("https://oauth.yandex.ru/authorize?response_type=token&client_id={0}",
+                Config.Constants.YandexAppId));
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

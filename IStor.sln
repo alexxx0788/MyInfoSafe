@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyInfoSafe", "MyInfoSafe\MyInfoSafe.csproj", "{E8F8393F-38E9-4469-8EE7-985E17FF4BC8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IStor.WFA", "MyInfoSafe\IStor.WFA.csproj", "{E8F8393F-38E9-4469-8EE7-985E17FF4BC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALayer", "DALayer.Controller\DALayer.csproj", "{32B0381B-EB29-4B34-9382-A3BF50E9831E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IStor.DAL", "DALayer.Controller\IStor.DAL.csproj", "{32B0381B-EB29-4B34-9382-A3BF50E9831E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{4547512F-9C9B-4CDC-9B20-8FEE5B7F7B7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,18 @@ Global
 		{32B0381B-EB29-4B34-9382-A3BF50E9831E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{32B0381B-EB29-4B34-9382-A3BF50E9831E}.Release|x86.ActiveCfg = Release|Any CPU
 		{32B0381B-EB29-4B34-9382-A3BF50E9831E}.Release|x86.Build.0 = Release|Any CPU
+		{4547512F-9C9B-4CDC-9B20-8FEE5B7F7B7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4547512F-9C9B-4CDC-9B20-8FEE5B7F7B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4547512F-9C9B-4CDC-9B20-8FEE5B7F7B7E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4547512F-9C9B-4CDC-9B20-8FEE5B7F7B7E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4547512F-9C9B-4CDC-9B20-8FEE5B7F7B7E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4547512F-9C9B-4CDC-9B20-8FEE5B7F7B7E}.Debug|x86.Build.0 = Debug|Any CPU
+		{4547512F-9C9B-4CDC-9B20-8FEE5B7F7B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4547512F-9C9B-4CDC-9B20-8FEE5B7F7B7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4547512F-9C9B-4CDC-9B20-8FEE5B7F7B7E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4547512F-9C9B-4CDC-9B20-8FEE5B7F7B7E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4547512F-9C9B-4CDC-9B20-8FEE5B7F7B7E}.Release|x86.ActiveCfg = Release|Any CPU
+		{4547512F-9C9B-4CDC-9B20-8FEE5B7F7B7E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

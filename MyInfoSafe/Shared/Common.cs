@@ -15,7 +15,7 @@ namespace MyInfoSafe.Shared
                     YandexDiskClient lDIsk = new YandexDiskClient(Config.Constants.YandexToken);
                     lDIsk.PUT(Config.Constants.DBFile, Config.Constants.DBFile);
                 }
-             //   SaveDuplicate();
+                //   SaveDuplicate();
             }
             RemoveFile(Config.Constants.DBFile);
             Process.GetCurrentProcess().Kill();

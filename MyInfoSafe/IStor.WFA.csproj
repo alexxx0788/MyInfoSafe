@@ -8,8 +8,8 @@
     <ProjectGuid>{E8F8393F-38E9-4469-8EE7-985E17FF4BC8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MyInfoSafe</RootNamespace>
-    <AssemblyName>MyInfoSafe</AssemblyName>
+    <RootNamespace>IStor.WFA</RootNamespace>
+    <AssemblyName>IStor.WFA</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -186,9 +186,9 @@
     <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DALayer.Controller\DALayer.csproj">
+    <ProjectReference Include="..\DALayer.Controller\IStor.DAL.csproj">
       <Project>{32b0381b-eb29-4b34-9382-a3bf50e9831e}</Project>
-      <Name>DALayer</Name>
+      <Name>IStor.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

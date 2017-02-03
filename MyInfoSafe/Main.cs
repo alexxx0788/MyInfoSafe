@@ -29,7 +29,6 @@ namespace MyInfoSafe
                 ShowBankForm();
                 Shared.Form.SelectedForm = Config.Constants.Forms.Bank;
             }
-
         }
 
         private void ShowInfoForm()
@@ -62,7 +61,6 @@ namespace MyInfoSafe
                 MessageBox.Show(res.Message);
                 password.Text = string.Empty;
             }
-
         }
 
         private void password_KeyUp(object sender, KeyEventArgs e)
@@ -78,7 +76,5 @@ namespace MyInfoSafe
         {
             Common.RemoveFile(Config.Constants.DBFile);
         }
-
-        
     }
 }

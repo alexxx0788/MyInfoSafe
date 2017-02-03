@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using DALayer.Controller.Model.Attributes;
+using IStor.DAL.Model.Attributes;
 
-namespace DALayer.Controller.Helper
+namespace IStor.DAL.Helper
 {
     public static class FieldsHelper
     {
-        public static string GetFieldForSearch(Type type)
+        public static string GetPrimaryKeyField(Type type)
         {
             if (type != null)
             {
-                PropertyInfo field = type.GetProperties().FirstOrDefault(x => x.CustomAttributes.Any(y => y.AttributeType == typeof(SearchableAttribute)));
+                PropertyInfo field = type.GetProperties().FirstOrDefault(x => x.CustomAttributes.Any(y => y.AttributeType == typeof(PrimaryKeyAttribute)));
                 if (field != null) return field.Name;
             }
             return string.Empty;
         }
-        public static string GetFieldForSelect(Type type)
+     /*   public static string GetFieldForSelect(Type type)
         {
             if (type != null)
             {
@@ -53,6 +53,6 @@ namespace DALayer.Controller.Helper
                 return string.Join(",", fields.Select(x => x));
             }
             return string.Empty;
-        }
+        }*/
     }
 }

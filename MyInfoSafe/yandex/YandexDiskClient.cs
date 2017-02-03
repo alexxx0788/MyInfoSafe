@@ -40,7 +40,7 @@ namespace MyInfoSafe.Yandex
         /// <returns>Список файлов и папок в папке dir или null если произошла ошибка</returns>
         public List<DirInfo> PROPPATCH(string dir)
         {
-            HttpWebRequest myweb = (HttpWebRequest)WebRequest.Create("https://webdav.yandex.ru/" + dir);
+            HttpWebRequest myweb = (HttpWebRequest) WebRequest.Create("https://webdav.yandex.ru/" + dir);
             myweb.Accept = "*/*";
             myweb.Headers.Add("Depth: 1");
             myweb.Headers.Add("Authorization: OAuth " + token);
@@ -48,7 +48,7 @@ namespace MyInfoSafe.Yandex
 
             try
             {
-                HttpWebResponse resp = (HttpWebResponse)myweb.GetResponse();
+                HttpWebResponse resp = (HttpWebResponse) myweb.GetResponse();
                 StreamReader sr = new StreamReader(resp.GetResponseStream());
                 string cont = sr.ReadToEnd();
                 List<DirInfo> dinfo = new List<DirInfo>();
@@ -78,7 +78,7 @@ namespace MyInfoSafe.Yandex
         /// <returns>true если запрос выполнен успешно</returns>
         public bool DELETE(string dir)
         {
-            HttpWebRequest myweb = (HttpWebRequest)WebRequest.Create("https://webdav.yandex.ru/" + dir);
+            HttpWebRequest myweb = (HttpWebRequest) WebRequest.Create("https://webdav.yandex.ru/" + dir);
             myweb.Accept = "*/*";
             myweb.Headers.Add("Depth: 1");
             myweb.Headers.Add("Authorization: OAuth " + token);
@@ -86,7 +86,7 @@ namespace MyInfoSafe.Yandex
 
             try
             {
-                HttpWebResponse resp = (HttpWebResponse)myweb.GetResponse();
+                HttpWebResponse resp = (HttpWebResponse) myweb.GetResponse();
             }
             catch (Exception ex)
             {
@@ -103,7 +103,7 @@ namespace MyInfoSafe.Yandex
         /// <returns>true если запрос выполнен успешно</returns>
         public bool MKCOL(string dir)
         {
-            HttpWebRequest myweb = (HttpWebRequest)WebRequest.Create("https://webdav.yandex.ru/" + dir);
+            HttpWebRequest myweb = (HttpWebRequest) WebRequest.Create("https://webdav.yandex.ru/" + dir);
             myweb.Accept = "*/*";
             myweb.Headers.Add("Depth: 1");
             myweb.Headers.Add("Authorization: OAuth " + token);
@@ -111,7 +111,7 @@ namespace MyInfoSafe.Yandex
 
             try
             {
-                HttpWebResponse resp = (HttpWebResponse)myweb.GetResponse();
+                HttpWebResponse resp = (HttpWebResponse) myweb.GetResponse();
             }
             catch (Exception ex)
             {
@@ -129,7 +129,7 @@ namespace MyInfoSafe.Yandex
         /// <returns>true если запрос выполнен успешно</returns>
         public bool PUT(string dir, string myfile)
         {
-            HttpWebRequest myweb = (HttpWebRequest)WebRequest.Create("https://webdav.yandex.ru/" + dir);
+            HttpWebRequest myweb = (HttpWebRequest) WebRequest.Create("https://webdav.yandex.ru/" + dir);
             myweb.Accept = "*/*";
             myweb.Headers.Add("Depth: 1");
             myweb.Headers.Add("Authorization: OAuth " + token);
@@ -161,7 +161,7 @@ namespace MyInfoSafe.Yandex
 
             try
             {
-                HttpWebResponse resp = (HttpWebResponse)myweb.GetResponse();
+                HttpWebResponse resp = (HttpWebResponse) myweb.GetResponse();
             }
             catch (Exception ex)
             {
@@ -180,12 +180,12 @@ namespace MyInfoSafe.Yandex
         /// <returns>true если запрос выполнен успешно</returns>
         public bool GET(string dir, string myfile)
         {
-            HttpWebRequest myweb = (HttpWebRequest)WebRequest.Create("https://webdav.yandex.ru/" + dir);
+            HttpWebRequest myweb = (HttpWebRequest) WebRequest.Create("https://webdav.yandex.ru/" + dir);
             myweb.Accept = "*/*";
             myweb.Headers.Add("Depth: 0");
             myweb.Headers.Add("Authorization: OAuth " + token);
             myweb.Method = "GET";
-            HttpWebResponse resp = (HttpWebResponse)myweb.GetResponse();
+            HttpWebResponse resp = (HttpWebResponse) myweb.GetResponse();
             byte[] bytes = ReadToEnd(resp.GetResponseStream());
             File.WriteAllBytes(myfile, bytes);
             return true;
@@ -220,7 +220,7 @@ namespace MyInfoSafe.Yandex
                         {
                             byte[] temp = new byte[readBuffer.Length * 2];
                             Buffer.BlockCopy(readBuffer, 0, temp, 0, readBuffer.Length);
-                            Buffer.SetByte(temp, totalBytesRead, (byte)nextByte);
+                            Buffer.SetByte(temp, totalBytesRead, (byte) nextByte);
                             readBuffer = temp;
                             totalBytesRead++;
                         }
@@ -254,9 +254,13 @@ namespace MyInfoSafe.Yandex
             return rez;
         }
     }
+
     public class DirInfo
     {
-        public DirInfo() { }
+        public DirInfo()
+        {
+        }
+
         public string displayName;
         public int contentLenght;
         public string creationDate;

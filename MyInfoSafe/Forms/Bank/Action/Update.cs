@@ -10,6 +10,7 @@ namespace MyInfoSafe.Forms.Bank.Action
     public partial class Update : Form
     {
         public int bankId = 0;
+
         public Update(int bankId)
         {
             InitializeComponent();
@@ -31,15 +32,15 @@ namespace MyInfoSafe.Forms.Bank.Action
                 var bankLabel = bankTxt.Text;
                 var summ = Convert.ToDecimal(moneyTxt.Text);
                 var comment = comments.Text;
-                    var bank = new BankDto();
-                    bank.Id = this.bankId;
-                    bank.BankName = bankLabel;
-                    bank.Summ = summ;
-                    bank.Comment = comment;
-                    (new DALayer.API.Model.Bank()).UpdateItem(bank,Config.Constants.DBPassword);
-                    Hide();
-                    var bankForm = new BankForm();
-                    bankForm.Show();
+                var bank = new BankDto();
+                bank.Id = this.bankId;
+                bank.BankName = bankLabel;
+                bank.Summ = summ;
+                bank.Comment = comment;
+                (new DALayer.API.Model.Bank()).UpdateItem(bank, Config.Constants.DBPassword);
+                Hide();
+                var bankForm = new BankForm();
+                bankForm.Show();
             }
             catch (Exception ex)
             {
@@ -53,6 +54,5 @@ namespace MyInfoSafe.Forms.Bank.Action
             var bankForm = new BankForm();
             bankForm.Show();
         }
-
     }
 }

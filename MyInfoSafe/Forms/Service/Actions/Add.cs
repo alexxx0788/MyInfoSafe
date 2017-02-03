@@ -32,7 +32,7 @@ namespace MyInfoSafe.Forms.Service.Actions
                 infoDto.Password = password;
                 infoDto.Advanced = address;
                 var info = new Info();
-                info.InsertItem(infoDto,Config.Constants.DBPassword);
+                info.InsertItem(infoDto, Config.Constants.DBPassword);
                 Hide();
                 var infoForm = new ServiceForm();
                 infoForm.Show();

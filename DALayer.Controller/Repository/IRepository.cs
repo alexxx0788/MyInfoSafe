@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using DALayer.Controller.Model.Dto;
 
-namespace DALayer.Controller.Model.Repository
+namespace IStor.DAL.Model.Repository
 {
     interface IRepository<T> : IDisposable where T:class
     {

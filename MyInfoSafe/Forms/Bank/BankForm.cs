@@ -28,9 +28,9 @@ namespace MyInfoSafe.Forms.Bank
         }
 
 
-        private void RefreshGrid (string search)
+        private void RefreshGrid(string search)
         {
-            var items=(new DALayer.API.Model.Bank()).GetItemsList(search, Config.Constants.DBPassword);
+            var items = (new DALayer.API.Model.Bank()).GetItemsList(search, Config.Constants.DBPassword);
             grid.DataSource = items;
             grid.Columns[0].Visible = false;
             grid.Columns[1].HeaderText = "Currency";
@@ -84,14 +84,14 @@ namespace MyInfoSafe.Forms.Bank
 
         private void removeCurrentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var show = MessageBox.Show("Are you sure, you want to remove it?","Removing Item",MessageBoxButtons.YesNo);
+            var show = MessageBox.Show("Are you sure, you want to remove it?", "Removing Item", MessageBoxButtons.YesNo);
             if (show.ToString() == "Yes")
             {
                 var position = 0;
                 if (grid.SelectedRows.Count > 0)
                 {
                     int.TryParse(grid.SelectedRows[0].Cells[0].Value.ToString(), out position);
-                    (new DALayer.API.Model.Bank()).RemoveItem(position,Config.Constants.DBPassword);
+                    (new DALayer.API.Model.Bank()).RemoveItem(position, Config.Constants.DBPassword);
                     RefreshGrid(string.Empty);
                 }
                 else

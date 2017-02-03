@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using DALayer.API.Dto;
 using MyInfoSafe.Shared;
 using Form = System.Windows.Forms.Form;
 
@@ -24,11 +23,10 @@ namespace MyInfoSafe.Forms.Bank.Action
                 bankItem.BankName = bankLabel;
                 bankItem.Summ = summ;
                 bankItem.Comment = comment;
-                (new DALayer.API.Model.Bank()).InsertItem(bankItem,Config.Constants.DBPassword);
+                (new DALayer.API.Model.Bank()).InsertItem(bankItem, Config.Constants.DBPassword);
                 Hide();
                 var lBankForm = new BankForm();
                 lBankForm.Show();
-
             }
             catch (Exception ex)
             {

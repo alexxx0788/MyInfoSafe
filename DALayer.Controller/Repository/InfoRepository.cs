@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DALayer.Controller.Model.Dto;
-using DALayer.Controller.Model.Repository;
+using IStor.DAL.Model.Dto;
+using IStor.DAL.Model.Repository;
 
-namespace DALayer.Controller.Controller
+namespace IStor.DAL.Controller
 {
     public class InfoController:IRepository<Info>
     {

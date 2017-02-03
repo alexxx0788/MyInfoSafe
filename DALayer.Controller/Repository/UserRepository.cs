@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using DALayer.Controller.Model.Dto;
-using DALayer.Controller.Model.Repository;
+using IStor.DAL.Model.Dto;
+using IStor.DAL.Model.Repository;
 
-namespace DALayer.Controller.Controller
+namespace IStor.DAL.Controller
 {
     public class UserController : IRepository<User>
     {
