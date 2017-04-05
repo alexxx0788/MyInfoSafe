@@ -1,15 +1,14 @@
-﻿using IStor.DAL.Model.Attributes;
+﻿using IStor.DAL.Shared.Attributes;
 
-namespace IStor.DAL.Model.Dto
+namespace IStorage.DAL.Model
 {
-    public class Money
+    public class Money : IDto
     {
         [PrimaryKey]
         public int Id { get; set; }
         public string Currency { get; set; }
         public string Amount { get; set; }
         public string Type { get; set; }
-        
         public string Details { get; set; }
     }
 }

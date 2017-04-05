@@ -1,24 +1,18 @@
 ﻿using System.Configuration;
 
-namespace MyInfoSafe.Shared
+namespace IStorage.WFA.Shared
 {
     public static class Config
     {
-        public static class Constants
+        public static class Settings
         {
             private static string _dbPassword = string.Empty;
             private static readonly string yandexToken = ConfigurationManager.AppSettings["YandexToken"];
             private static readonly string dbTempDir = ConfigurationManager.AppSettings["DbTempDir"];
-            private static string DbFile = @"D:\GIT\MyInfoSafe\db\INFODb.sdf";
+            private static string DbFile = ConfigurationManager.AppSettings["DbFile"];
             private const string yandexAppId = "d7aa8a001f1a4a40b6148d91458d8419";
-            private static bool rewriteDB = true;
-            private static int version = 1;
-            private static bool writeMode = true;
+            private static bool rewriteDB = false;
 
-            static Constants()
-            {
-                ShowOldBank = false;
-            }
 
             public static string DBFile
             {
@@ -34,6 +28,10 @@ namespace MyInfoSafe.Shared
             {
                 get { return _dbPassword; }
                 set { _dbPassword = value; }
+            }
+            public static string ConnectionString
+            {
+                get { return $"Data Source={DbFile};Persist Security Info=False;password={DBPassword}"; }
             }
 
             public static string YandexToken
@@ -51,26 +49,7 @@ namespace MyInfoSafe.Shared
                 get { return rewriteDB; }
                 set { rewriteDB = value; }
             }
-
-            public enum Forms
-            {
-                Services,
-                Bank
-            }
-
-            public static bool ShowOldBank { get; set; }
-
-            public static int Version
-            {
-                get { return version; }
-                set { version = value; }
-            }
-
-            public static bool WriteMode
-            {
-                get { return writeMode; }
-                set { writeMode = value; }
-            }
+            
         }
     }
 }

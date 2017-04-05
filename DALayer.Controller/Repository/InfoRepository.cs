@@ -1,47 +1,21 @@
 ﻿using System.Collections.Generic;
-using System.Data;
-using IStor.DAL.Model.Dto;
-using IStor.DAL.Model.Repository;
+using IStor.DAL.Shared.Helper;
+using IStorage.DAL.Model;
+using IStorage.DAL.Repository.Db;
 
-namespace IStor.DAL.Controller
+namespace IStorage.DAL.Repository
 {
-    public class InfoController:IRepository<Info>
+    public class InfoRepository : SqlRepository<Info>
     {
-        private readonly DapperRepository<Info> _dapper;
-        public InfoController(IDbConnection connection)
+        public InfoRepository(string connectionString) : base(connectionString) { }
+        public override IEnumerable<Info> GetList(string text)
         {
-            _dapper = new DapperRepository<Info>(connection);
+            using (var dapper = new DapperHelper<Info>(SqlConnectionString))
+            {
+                var pattern = $"SELECT * FROM [Info] WHERE Service like '{text}%'";
+                return dapper.ExecuteQuery(pattern);
+            }
         }
-
-        public void Dispose()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<Info> GetList(string service)
-        {
-            return _dapper.GetList(service);
-        }
-
-        public Info GetEntry(int id)
-        {
-            return _dapper.GetEntry(id);
-        }
-
-        public bool Insert(Info item)
-        {
-            return _dapper.Insert(item);
-        }
-
-        public bool Update(Info item, int id)
-        {
-            return _dapper.Update(item, id);
-        }
-
-        public bool Delete(int id)
-        {
-            return _dapper.Delete(id);
-        }
-
     }
 }
+    

@@ -1,4 +1,4 @@
-﻿namespace MyInfoSafe.Forms.Service
+﻿namespace IStorage.WFA.Forms.Service
 {
     partial class ServiceForm
     {
@@ -38,8 +38,9 @@
             this.removeCurrentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bankFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNew = new System.Windows.Forms.Button();
+            this.moneyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -51,17 +52,17 @@
             this.grid.AllowUserToResizeColumns = false;
             this.grid.AllowUserToResizeRows = false;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Location = new System.Drawing.Point(-1, 97);
+            this.grid.Location = new System.Drawing.Point(-1, 107);
             this.grid.MultiSelect = false;
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
-            this.grid.Size = new System.Drawing.Size(402, 347);
+            this.grid.Size = new System.Drawing.Size(402, 337);
             this.grid.TabIndex = 6;
             this.grid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_RowEnter);
             // 
             // searchTxt
             // 
-            this.searchTxt.Location = new System.Drawing.Point(36, 71);
+            this.searchTxt.Location = new System.Drawing.Point(36, 81);
             this.searchTxt.Name = "searchTxt";
             this.searchTxt.Size = new System.Drawing.Size(365, 20);
             this.searchTxt.TabIndex = 4;
@@ -71,19 +72,20 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 16F);
-            this.label3.Location = new System.Drawing.Point(87, 35);
+            this.label3.Font = new System.Drawing.Font("Cambria", 18F);
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(147, 40);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(209, 27);
+            this.label3.Size = new System.Drawing.Size(106, 28);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Info Safe (accounts)";
+            this.label3.Text = "Accounts";
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.actionToolStripMenuItem,
-            this.optionToolStripMenuItem,
-            this.bankFormToolStripMenuItem});
+            this.optionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(403, 27);
@@ -96,72 +98,82 @@
             this.addNewToolStripMenuItem,
             this.updateCurrentToolStripMenuItem,
             this.removeCurrentToolStripMenuItem});
-            this.actionToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.actionToolStripMenuItem.Font = new System.Drawing.Font("Cambria", 12F);
             this.actionToolStripMenuItem.Name = "actionToolStripMenuItem";
-            this.actionToolStripMenuItem.Size = new System.Drawing.Size(66, 23);
+            this.actionToolStripMenuItem.Size = new System.Drawing.Size(65, 23);
             this.actionToolStripMenuItem.Text = "Action";
             // 
             // addNewToolStripMenuItem
             // 
             this.addNewToolStripMenuItem.Name = "addNewToolStripMenuItem";
-            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(126, 24);
+            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.addNewToolStripMenuItem.Text = "add";
             this.addNewToolStripMenuItem.Click += new System.EventHandler(this.addNewToolStripMenuItem_Click);
             // 
             // updateCurrentToolStripMenuItem
             // 
             this.updateCurrentToolStripMenuItem.Name = "updateCurrentToolStripMenuItem";
-            this.updateCurrentToolStripMenuItem.Size = new System.Drawing.Size(126, 24);
+            this.updateCurrentToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.updateCurrentToolStripMenuItem.Text = "update";
             this.updateCurrentToolStripMenuItem.Click += new System.EventHandler(this.updateCurrentToolStripMenuItem_Click);
             // 
             // removeCurrentToolStripMenuItem
             // 
             this.removeCurrentToolStripMenuItem.Name = "removeCurrentToolStripMenuItem";
-            this.removeCurrentToolStripMenuItem.Size = new System.Drawing.Size(126, 24);
+            this.removeCurrentToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.removeCurrentToolStripMenuItem.Text = "delete";
             this.removeCurrentToolStripMenuItem.Click += new System.EventHandler(this.removeCurrentToolStripMenuItem_Click);
             // 
             // optionToolStripMenuItem
             // 
             this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.moneyToolStripMenuItem,
+            this.notesToolStripMenuItem,
             this.changePasswordToolStripMenuItem});
-            this.optionToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.optionToolStripMenuItem.Font = new System.Drawing.Font("Cambria", 12F);
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
-            this.optionToolStripMenuItem.Size = new System.Drawing.Size(69, 23);
-            this.optionToolStripMenuItem.Text = "Option";
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(60, 23);
+            this.optionToolStripMenuItem.Text = "Other";
             // 
             // changePasswordToolStripMenuItem
             // 
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(200, 24);
-            this.changePasswordToolStripMenuItem.Text = "change password";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(205, 24);
+            this.changePasswordToolStripMenuItem.Text = "Change Password";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
-            // 
-            // bankFormToolStripMenuItem
-            // 
-            this.bankFormToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.bankFormToolStripMenuItem.Name = "bankFormToolStripMenuItem";
-            this.bankFormToolStripMenuItem.Size = new System.Drawing.Size(97, 23);
-            this.bankFormToolStripMenuItem.Text = "Bank Form";
-            this.bankFormToolStripMenuItem.Click += new System.EventHandler(this.bankFormToolStripMenuItem_Click);
             // 
             // addNew
             // 
-            this.addNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(180)));
-            this.addNew.Location = new System.Drawing.Point(0, 71);
+            this.addNew.BackColor = System.Drawing.Color.White;
+            this.addNew.Font = new System.Drawing.Font("Cambria", 8F);
+            this.addNew.ForeColor = System.Drawing.Color.Black;
+            this.addNew.Location = new System.Drawing.Point(-1, 80);
             this.addNew.Name = "addNew";
             this.addNew.Size = new System.Drawing.Size(30, 20);
             this.addNew.TabIndex = 9;
             this.addNew.Text = "+";
-            this.addNew.UseVisualStyleBackColor = true;
+            this.addNew.UseVisualStyleBackColor = false;
             this.addNew.Click += new System.EventHandler(this.addNew_Click);
+            // 
+            // moneyToolStripMenuItem
+            // 
+            this.moneyToolStripMenuItem.Name = "moneyToolStripMenuItem";
+            this.moneyToolStripMenuItem.Size = new System.Drawing.Size(205, 24);
+            this.moneyToolStripMenuItem.Text = "Money";
+            this.moneyToolStripMenuItem.Click += new System.EventHandler(this.moneyToolStripMenuItem_Click);
+            // 
+            // notesToolStripMenuItem
+            // 
+            this.notesToolStripMenuItem.Name = "notesToolStripMenuItem";
+            this.notesToolStripMenuItem.Size = new System.Drawing.Size(205, 24);
+            this.notesToolStripMenuItem.Text = "Notes";
+            this.notesToolStripMenuItem.Click += new System.EventHandler(this.notesToolStripMenuItem_Click);
             // 
             // ServiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(403, 443);
             this.Controls.Add(this.addNew);
             this.Controls.Add(this.label3);
@@ -196,9 +208,8 @@
         private System.Windows.Forms.ToolStripMenuItem removeCurrentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bankFormToolStripMenuItem;
         private System.Windows.Forms.Button addNew;
-
-
+        private System.Windows.Forms.ToolStripMenuItem moneyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem notesToolStripMenuItem;
     }
 }

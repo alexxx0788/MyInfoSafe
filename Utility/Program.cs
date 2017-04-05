@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Utility.Model;
+using IStor.DAL.Model;
+using IStor.DAL.Repository;
+using Newtonsoft.Json;
 
 namespace Utility
 {
@@ -12,18 +10,24 @@ namespace Utility
     {
         static void Main(string[] args)
         {
-            var objects = new List<User>()
+            var connOld = @"Data Source=c:\ALEXXX\old\info_base.sdf;Persist Security Info=False;password=alexxx1428";
+            var connNew = @"Data Source=c:\ALEXXX\new\info_base.sdf;Persist Security Info=False;password=alexxx1428";
+            InfoRepositoryOld repoOld = new InfoRepositoryOld(connOld);
+            var list = repoOld.GetList().OrderBy(i=>i.Id);
+
+            InfoRepositoryNew repoNew = new InfoRepositoryNew(connNew);
+            foreach (var infoOld in list)
             {
-                new User() {Age =20,Email = "ssdda@sdfsf.ru",FirstName = "firstName",LastName = "lastName",TechnicalDetails = "ddddddd",UserId = 123},
-                new User() {Age =20,Email = "ssdda@sdfsf.ru",FirstName = "firstName",LastName = "lastName",TechnicalDetails = "ddddddd",UserId = 123}
-            };
-            using (TextWriter tw = File.CreateText("D:\\testoutput.csv"))
-            {
-                foreach (var line in Exporter.ToCsv(objects, ";"))
+                var obj = new InfoNew()
                 {
-                    tw.WriteLine(line);
-                }
+                    Details = infoOld.advanced,
+                    Login = infoOld.login,
+                    Password = infoOld.password,
+                    Service = infoOld.service
+                };
+                repoNew.Insert(obj);
             }
+
         }
     }
 }

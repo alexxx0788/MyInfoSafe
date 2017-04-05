@@ -1,75 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using DALayer.API.Model;
-using MyInfoSafe.forms;
-using MyInfoSafe.Forms.Bank;
-using MyInfoSafe.Forms.Service.Actions;
-using MyInfoSafe.Shared;
-using Newtonsoft.Json;
+using IStorage.DAL.Repository;
+using IStorage.WFA.Forms.Money;
+using IStorage.WFA.Forms.Notes;
+using IStorage.WFA.Forms.Service.Actions;
+using IStorage.WFA.Shared;
 using Form = System.Windows.Forms.Form;
 
-namespace MyInfoSafe.Forms.Service
+namespace IStorage.WFA.Forms.Service
 {
     public partial class ServiceForm : Form
     {
+        private readonly InfoRepository _repository = new InfoRepository(Config.Settings.ConnectionString);
+
         public ServiceForm()
         {
             InitializeComponent();
-            var info = new Info();
-            //   SerializeDataToJson();
             RefreshGrid(string.Empty);
-            if (!Config.Constants.WriteMode)
-            {
-                HideElements();
-            }
         }
 
-
-        private void DeserializeDataToJson()
-        {
-            var info = new Info();
-            var text = File.ReadAllText(@"C:\ALEXXX\bank.txt");
-            try
-            {
-                dynamic list = JsonConvert.DeserializeObject(text);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-
-        private void SerializeDataToJson()
-        {
-            var bank = new DALayer.API.Model.Info();
-            var list = bank.GetItemsList(string.Empty, Config.Constants.DBPassword);
-            var data = JsonConvert.SerializeObject(list);
-
-            File.WriteAllText(@"C:\ALEXXX\info.txt", data);
-        }
-
-        private void HideElements()
-        {
-            addNewToolStripMenuItem.Visible = false;
-            removeCurrentToolStripMenuItem.Visible = false;
-            optionToolStripMenuItem.Visible = false;
-        }
-
-        private void refresh_Click(object sender, EventArgs e)
-        {
-            var search = searchTxt.Text;
-            RefreshGrid(search);
-        }
 
         private void RefreshGrid(string search)
         {
-            var info = new Info();
-            var lInfoList = info.GetItemsList(search, Config.Constants.DBPassword);
+            var lInfoList = string.IsNullOrEmpty(search) ? _repository.GetList() : _repository.GetList(search);
             grid.DataSource = lInfoList;
             grid.Columns[0].Visible = false;
             grid.Columns[3].MinimumWidth = 142;
@@ -83,16 +36,14 @@ namespace MyInfoSafe.Forms.Service
 
         private void grid_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            /* int position = 0;
-             if (grid.SelectedRows.Count > 0)
-             {
-                 int.TryParse(grid.SelectedRows[0].Cells[0].Value.ToString(), out position);
-                 var inf = new Info();
-                 Update update = new Update();
-                 update.InfoId = position;
-                 this.Hide();
-                 update.Show();
-             }*/
+            if (grid.SelectedRows.Count > 0)
+            {
+                int position;
+                int.TryParse(grid.SelectedRows[0].Cells[0].Value.ToString(), out position);
+                Update update = new Update(position) {InfoId = position};
+                this.Hide();
+                update.Show();
+            }
         }
 
         private void InfoForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -139,9 +90,10 @@ namespace MyInfoSafe.Forms.Service
             {
                 if (grid.SelectedRows.Count > 0)
                 {
-                    var position = 0;
+                    int position;
                     int.TryParse(grid.SelectedRows[0].Cells[0].Value.ToString(), out position);
-                    (new Info()).RemoveItem(position, Config.Constants.DBPassword);
+                    _repository.Delete(position);
+                    Config.Settings.RewriteDB = true;
                     RefreshGrid(string.Empty);
                 }
                 else
@@ -158,18 +110,25 @@ namespace MyInfoSafe.Forms.Service
             changePassword.Show();
         }
 
-        private void bankFormToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addNew_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var addForm = new Add();
+            addForm.Show();
+        }
+
+        private void moneyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Hide();
             var bankInfo = new BankForm();
             bankInfo.Show();
         }
 
-        private void addNew_Click(object sender, EventArgs e)
+        private void notesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Hide();
-            var addForm = new Add();
-            addForm.Show();
+            var notesForm = new NotesForm();
+            notesForm.Show();
         }
     }
 }

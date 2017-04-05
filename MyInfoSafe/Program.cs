@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
-using MyInfoSafe.Forms.InfoForm;
-using MyInfoSafe.forms;
-using MyInfoSafe.Shared;
+using IStorage.WFA.Forms.InfoForm;
+using IStorage.WFA.Shared;
 using MyInfoSafe.Yandex;
 
-namespace MyInfoSafe
+namespace IStorage.WFA
 {
     static class Program
     {
@@ -19,13 +18,13 @@ namespace MyInfoSafe
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
-                // YandexDiskClient disk = new YandexDiskClient(Config.Constants.YandexToken);
-                // disk.GET(Config.Constants.DBFile, Config.Constants.DBFile);
+                YandexDiskClient disk = new YandexDiskClient(Config.Settings.YandexToken);
+                disk.GET(Config.Settings.DBFile, Config.Settings.DBFile);
                 Application.Run(new Main());
             }
-            catch
+            catch (Exception ex)
             {
-                Application.Run(new GetTokenForm());
+                Application.Run(new GetTokenForm(ex.Message));
             }
         }
     }

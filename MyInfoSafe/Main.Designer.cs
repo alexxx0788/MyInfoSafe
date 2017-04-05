@@ -1,4 +1,4 @@
-﻿namespace MyInfoSafe
+﻿namespace IStorage.WFA
 {
     partial class Main
     {
@@ -31,81 +31,69 @@
             this.openBtn = new System.Windows.Forms.Button();
             this.infoSafe = new System.Windows.Forms.Label();
             this.password = new System.Windows.Forms.TextBox();
-            this.services = new System.Windows.Forms.RadioButton();
-            this.bank = new System.Windows.Forms.RadioButton();
+            this.ErrorMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // openBtn
             // 
-            this.openBtn.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.openBtn.Location = new System.Drawing.Point(6, 173);
+            this.openBtn.BackColor = System.Drawing.Color.White;
+            this.openBtn.Font = new System.Drawing.Font("Cambria", 12F);
+            this.openBtn.ForeColor = System.Drawing.Color.Black;
+            this.openBtn.Location = new System.Drawing.Point(10, 119);
             this.openBtn.Name = "openBtn";
-            this.openBtn.Size = new System.Drawing.Size(114, 26);
+            this.openBtn.Size = new System.Drawing.Size(230, 26);
             this.openBtn.TabIndex = 5;
-            this.openBtn.Text = "enter";
-            this.openBtn.UseVisualStyleBackColor = true;
+            this.openBtn.Text = "ENTER";
+            this.openBtn.UseVisualStyleBackColor = false;
             this.openBtn.Click += new System.EventHandler(this.enter_Click);
             // 
             // infoSafe
             // 
             this.infoSafe.AutoSize = true;
-            this.infoSafe.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.infoSafe.Location = new System.Drawing.Point(0, 9);
+            this.infoSafe.Font = new System.Drawing.Font("Cambria", 18F);
+            this.infoSafe.ForeColor = System.Drawing.Color.Black;
+            this.infoSafe.Location = new System.Drawing.Point(82, 7);
             this.infoSafe.Name = "infoSafe";
-            this.infoSafe.Size = new System.Drawing.Size(124, 33);
+            this.infoSafe.Size = new System.Drawing.Size(91, 28);
             this.infoSafe.TabIndex = 0;
-            this.infoSafe.Text = "Info Safe";
+            this.infoSafe.Text = "Storage";
             // 
             // password
             // 
-            this.password.Location = new System.Drawing.Point(6, 63);
+            this.password.Location = new System.Drawing.Point(10, 51);
             this.password.Name = "password";
             this.password.PasswordChar = '*';
-            this.password.Size = new System.Drawing.Size(114, 20);
+            this.password.Size = new System.Drawing.Size(230, 20);
             this.password.TabIndex = 2;
             this.password.KeyUp += new System.Windows.Forms.KeyEventHandler(this.password_KeyUp);
             // 
-            // services
+            // ErrorMessage
             // 
-            this.services.AutoSize = true;
-            this.services.Checked = true;
-            this.services.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.services.Location = new System.Drawing.Point(6, 89);
-            this.services.Name = "services";
-            this.services.Size = new System.Drawing.Size(106, 28);
-            this.services.TabIndex = 3;
-            this.services.TabStop = true;
-            this.services.Text = "accounts";
-            this.services.UseVisualStyleBackColor = true;
-            // 
-            // bank
-            // 
-            this.bank.AutoSize = true;
-            this.bank.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bank.Location = new System.Drawing.Point(6, 121);
-            this.bank.Name = "bank";
-            this.bank.Size = new System.Drawing.Size(88, 28);
-            this.bank.TabIndex = 4;
-            this.bank.Text = "money";
-            this.bank.UseVisualStyleBackColor = true;
+            this.ErrorMessage.AutoSize = true;
+            this.ErrorMessage.ForeColor = System.Drawing.Color.Red;
+            this.ErrorMessage.Location = new System.Drawing.Point(10, 72);
+            this.ErrorMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ErrorMessage.Name = "ErrorMessage";
+            this.ErrorMessage.Size = new System.Drawing.Size(0, 13);
+            this.ErrorMessage.TabIndex = 6;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClientSize = new System.Drawing.Size(124, 211);
-            this.Controls.Add(this.bank);
-            this.Controls.Add(this.services);
+            this.BackColor = System.Drawing.Color.Gainsboro;
+            this.ClientSize = new System.Drawing.Size(249, 174);
+            this.Controls.Add(this.ErrorMessage);
             this.Controls.Add(this.infoSafe);
             this.Controls.Add(this.password);
             this.Controls.Add(this.openBtn);
+            this.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main";
+            this.Text = "IStorage";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -117,8 +105,7 @@
         private System.Windows.Forms.Button openBtn;
         private System.Windows.Forms.Label infoSafe;
         private System.Windows.Forms.TextBox password;
-        private System.Windows.Forms.RadioButton services;
-        private System.Windows.Forms.RadioButton bank;
+        private System.Windows.Forms.Label ErrorMessage;
     }
 }
 

@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
-using DALayer.API.Dto;
-using DALayer.API.Model;
-using MyInfoSafe.Shared;
+using IStorage.DAL.Model;
+using IStorage.DAL.Repository;
+using IStorage.WFA.Shared;
 using Form = System.Windows.Forms.Form;
 
-namespace MyInfoSafe.Forms.Service.Actions
+namespace IStorage.WFA.Forms.Service.Actions
 {
     public partial class Add : Form
     {
+        private readonly InfoRepository _repository = new InfoRepository(Config.Settings.ConnectionString);
         public Add()
         {
             InitializeComponent();
@@ -26,13 +27,15 @@ namespace MyInfoSafe.Forms.Service.Actions
             }
             else
             {
-                var infoDto = new InfoDto();
-                infoDto.Service = service;
-                infoDto.Login = login;
-                infoDto.Password = password;
-                infoDto.Advanced = address;
-                var info = new Info();
-                info.InsertItem(infoDto, Config.Constants.DBPassword);
+                var infoDto = new Info
+                {
+                    Service = service,
+                    Login = login,
+                    Password = password,
+                    Details = address
+                };
+                _repository.Insert(infoDto);
+                Config.Settings.RewriteDB = true;
                 Hide();
                 var infoForm = new ServiceForm();
                 infoForm.Show();

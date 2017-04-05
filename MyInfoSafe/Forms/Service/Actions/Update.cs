@@ -1,30 +1,26 @@
 ﻿using System;
 using System.Windows.Forms;
-using DALayer.API.Dto;
-using DALayer.API.Model;
-using MyInfoSafe.Shared;
+using IStorage.DAL.Model;
+using IStorage.DAL.Repository;
+using IStorage.WFA.Shared;
 using Form = System.Windows.Forms.Form;
 
-namespace MyInfoSafe.Forms.Service.Actions
+namespace IStorage.WFA.Forms.Service.Actions
 {
     public partial class Update : Form
     {
+        private readonly InfoRepository _repository = new InfoRepository(Config.Settings.ConnectionString);
         public int InfoId;
 
         public Update(int infoId)
         {
             InitializeComponent();
-            if (!Config.Constants.WriteMode)
-            {
-                edit.Visible = false;
-            }
             this.InfoId = infoId;
-            var infoDto = (new Info()).GetItemById(infoId, Config.Constants.DBPassword);
-            service_txt.Text = infoDto.Service;
-            login_txt.Text = infoDto.Login;
-            pwd_txt.Text = infoDto.Password;
-            advanced_txt.Text = infoDto.Advanced;
-            (new Info()).UpdateItem(infoDto, Config.Constants.DBPassword);
+            var info = _repository.FindById(infoId);
+            service_txt.Text = info.Service;
+            login_txt.Text = info.Login;
+            pwd_txt.Text = info.Password;
+            advanced_txt.Text = info.Details;
         }
 
         private void edit_Click(object sender, EventArgs e)
@@ -39,16 +35,19 @@ namespace MyInfoSafe.Forms.Service.Actions
             }
             else
             {
-                var info = new InfoDto();
-                info.Service = service;
-                info.Login = login;
-                info.Password = password;
-                info.Advanced = text;
-                info.Id = InfoId;
-                (new Info()).UpdateItem(info, Config.Constants.DBPassword);
+                var info = new Info
+                {
+                    Service = service,
+                    Login = login,
+                    Password = password,
+                    Details = text,
+                    Id = InfoId
+                };
+                _repository.Update(info, InfoId);
+                Config.Settings.RewriteDB = true;
                 Hide();
-                var infoBank = new ServiceForm();
-                infoBank.Show();
+                 var infoBank = new ServiceForm();
+                 infoBank.Show();
             }
         }
 
@@ -57,6 +56,23 @@ namespace MyInfoSafe.Forms.Service.Actions
             Hide();
             var infoItem = new ServiceForm();
             infoItem.Show();
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            var res = MessageBox.Show("Are you sure, you want to remove it?", "Removing Item", MessageBoxButtons.YesNo);
+            if (res.ToString() == "Yes")
+            {
+                _repository.Delete(InfoId);
+                Config.Settings.RewriteDB = true;
+                Hide();
+                var infoItem = new ServiceForm();
+                infoItem.Show();
+            }
+            else
+            {
+                MessageBox.Show("You must select row");
+            }
         }
     }
 }
